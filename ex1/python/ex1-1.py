@@ -7,6 +7,7 @@ def main():
     x = np.linspace(0, 15, 1000)
     f = x - np.tan(x)
 
+    plt.ylim(-50, 50)
     plt.plot(x, f)
     plt.show()
 
