@@ -32,7 +32,7 @@ def dichotomy(max_x, min_x, error):
 
 
 def main():
-    step = 0.0001
+    step = 0.001
     min_x = 0
     max_x = min_x + step
 
