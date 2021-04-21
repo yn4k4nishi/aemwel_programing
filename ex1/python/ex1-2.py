@@ -32,27 +32,9 @@ def dichotomy(max_x, min_x, error):
 
 
 # aとbの間にtan(x)の不連続点があるかチェックする
-def checkDiscontinuous(a, b):
-    # 第何象限か計算する
-    t_a = int(a / (np.pi / 2))
-    t_a = t_a % 4 + 1
+def hasDiscontinuous(a, b):
+    pass
 
-    t_b = int(b / (np.pi / 2))
-    t_b = t_b % 4 + 1
-
-    # 第1象限と第2象限を跨ぐ場合はFalse
-    if(t_a == 1 and t_b == 2):
-        return False
-    elif(t_a == 2 and t_b == 1):
-        return False
-
-    # 第3象限と第4象限を跨ぐ場合はFalse
-    if(t_a == 3 and t_b == 4):
-        return False
-    elif(t_a == 4 and t_b == 3):
-        return False
-
-    return True
 
 
 def main():
@@ -68,7 +50,7 @@ def main():
     print("|" + "-" * 20 + "|" + "-" * 20 + "|")
 
     while(now_x < max_x):
-        if(not checkDiscontinuous(min_x, now_x)):
+        if(hasDiscontinuous(min_x, now_x)):
             min_x = now_x
             now_x = min_x + step
             continue
