@@ -10,9 +10,10 @@ def f(x):
 def dichotomy(max_x, min_x, error):
     # 同符号の場合はFalseを返す
     if f(max_x) * f(min_x) > 0:
-        return False
+        return False, 0
 
     num = 0
+    max_trials = 1000
     mid_x = (max_x + min_x) / 2
     while(abs(f(mid_x)) > error):
         if(f(min_x) * f(mid_x) >= 0):
@@ -22,18 +23,12 @@ def dichotomy(max_x, min_x, error):
 
         mid_x = (max_x + min_x) / 2
 
-        if(num > 1000):
-            print("error : time out")
-            return False
+        if(num > max_trials):
+            return False ,0
 
         num = num + 1
 
-    return mid_x
-
-
-# aとbの間にtan(x)の不連続点があるかチェックする
-def hasDiscontinuous(a, b):
-    pass
+    return True, mid_x
 
 
 
@@ -50,16 +45,17 @@ def main():
     print("|" + "-" * 20 + "|" + "-" * 20 + "|")
 
     while(now_x < max_x):
-        if(hasDiscontinuous(min_x, now_x)):
-            min_x = now_x
-            now_x = min_x + step
-            continue
-
         if(f(min_x) * f(now_x) < 0):
-            ans_x = dichotomy(now_x, min_x, 0.00001)
-            print("|{:20.15f}|{:20.15f}|".format(ans_x, f(ans_x)))
-            min_x = now_x
-            now_x = min_x
+            success , ans_x = dichotomy(now_x, min_x, 0.00001)
+            if success:
+                print("|{:20.15f}|{:20.15f}|".format(ans_x, f(ans_x)))
+                min_x = now_x
+                now_x = min_x
+            else:
+                min_x = now_x
+                now_x = min_x + step
+                continue
+            
 
         now_x = now_x + step
 

@@ -9,7 +9,7 @@ def main():
     x = np.linspace(0, 15, 1000)
 
     plt.ylim(-50, 50)
-    plt.plot(x, inv_f(x))
+    plt.plot(x, f(x))
     plt.show()
 
 
