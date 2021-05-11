@@ -5,6 +5,7 @@
 #undef I
 #define j _Imaginary_I
 
+static const int size = 4;
 double complex M[4][4]={
     {  3+4j, -9j , 6-5j, 8+1j },
     { -4+5j,  7  , 2+3j, 4+1j },
@@ -40,7 +41,7 @@ void printMatrix(int size, double complex matrix[size][size]){
 }
 
 double complex det2x2(double complex matrix[2][2]){
-    return matrix[0][1] * matrix[1][0] - matrix[0][0] * matrix[1][1];
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
 }
 
 double complex det(int size, double complex matrix[size][size]){
@@ -65,9 +66,17 @@ double complex det(int size, double complex matrix[size][size]){
                 }
                 
             }
-            printf("\n");
-            printMatrix(size-1, a_mat);
+
+            // 列番号と行番号の和が偶数なら+、奇数なら-
+            if((i+2) % 2 == 0){
+                ans += matrix[i][0] * det(size-1, a_mat);
+            }else{
+                ans -= matrix[i][0] * det(size-1, a_mat);
+            }
+
         }
+
+        return ans;
         
     }
 }
@@ -75,9 +84,11 @@ double complex det(int size, double complex matrix[size][size]){
 int main(int argc, char *argv[]){
 
     printf("M = \n");
-    printMatrix(4, M);
+    printMatrix(size, M);
+    printf("\n");
 
-    det(4, M);
+    double complex det_M = det(size, M);
+    printf("det(M) = %f + %fj\n", creal(det_M), cimag(det_M));
 
     return 0;
 }
