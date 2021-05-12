@@ -54,10 +54,22 @@ void inverse(const int size,
     }
 
     // 右上の成分を0にする
+    for (int k = 1; k < size; k++){
+        for (int i = 0; i < k; i++){
+            double complex t = expand[i][k];
+            for (int j = 0; j < size*2; j++){
+                expand[i][j] -= t * expand[k][j];
+            }   
+        }
+    }
     
-    
-    printMatrix(size, size*2, expand);    
-
+    // outputに結果をコピー
+    for (int i = 0; i < size; i++){
+        for (int j = 0; j < size; j++){
+            output[i][j] = expand[i][j+size];
+        }
+        
+    }
 }
 
 int main(){
@@ -68,6 +80,10 @@ int main(){
 
     double complex inv_M[size][size];
     inverse(size, M, inv_M);
+
+    printf("inv M = \n");
+    printMatrix(size, size, inv_M);
+    printf("\n");
 
     return 0;
 }
