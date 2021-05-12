@@ -1,9 +1,6 @@
 #include "stdio.h"
 #include "complex.h"
-
-// 虚数単位をjにする
-#undef I
-#define j _Imaginary_I
+#include "utils.h"
 
 static const int size = 4;
 double complex M[4][4]={
@@ -12,33 +9,6 @@ double complex M[4][4]={
     {  7-3j, 4-7j, -3j , 5-3j },
     {  1+8j, 9-6j, 1-1j,  -3  }
 };
-
-void printMatrix(int size, double complex matrix[size][size]){
-    for (int i = 0; i < size; i++){
-        if( i == 0){
-            printf("┏\t");
-        }else if (i == size-1){
-            printf("┗\t");
-        }else{
-            printf("┃\t");
-        }
-
-        for (int j = 0; j < size; j++){
-            printf("%f%+fj\t", creal(matrix[i][j]), cimag(matrix[i][j]));
-        }
-
-        if( i == 0){
-            printf("┓");
-        }else if (i == size-1){
-            printf("┛");
-        }else{
-            printf("┃ ");
-        }
-        printf("\n");
-    }
-    
-
-}
 
 double complex det2x2(double complex matrix[2][2]){
     return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
@@ -84,7 +54,7 @@ double complex det(int size, double complex matrix[size][size]){
 int main(int argc, char *argv[]){
 
     printf("M = \n");
-    printMatrix(size, M);
+    printMatrix(size, size, M);
     printf("\n");
 
     double complex det_M = det(size, M);
