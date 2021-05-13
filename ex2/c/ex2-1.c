@@ -60,5 +60,14 @@ int main(int argc, char *argv[]){
     double complex det_M = det(size, M);
     printf("det(M) = %f + %fj\n", creal(det_M), cimag(det_M));
 
+    if(argc < 2){
+        printf("plz input file path.\n");
+    }else{
+        int size;
+        double complex **M; 
+        loadMatrix(argv[1], size, M);
+        printMatrix(size, size, M);
+    }
+
     return 0;
 }
