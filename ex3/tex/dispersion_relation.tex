@@ -1,0 +1,142 @@
+\documentclass[a4paper,10pt]{bxjsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% \usepackage{here}
+
+\title{プログラム演習 課題3}
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+% \section*{section}
+
+比誘電率$\epsilon_r$、厚さ$a$の誘電体スラブに沿ってz方向伝搬するTMモードの分散関係式を求める。
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig.png}
+    \caption{}
+    \label{fig:1}
+\end{figure}
+
+$\rho = 0$とすると、Maxwell方程式は
+\begin{eqnarray}
+    \nabla \times \mathbb{E} &=& - \frac{\partial}{\partial t} \mathbb{B} \\
+    \nabla \times \mathbb{B} &=&  \frac{\partial}{\partial t} \mu \epsilon \mathbb{E} \\
+    \nabla \cdot \mathbb{E} &=& \frac{\rho}{\epsilon} = 0
+\end{eqnarray}
+となる。
+
+(1)の両辺の回転をとる
+\begin{align*}
+    \nabla \times \left(\nabla \times \mathbb{E}\right)
+        &= - \frac{\partial}{\partial t} \nabla \times \mathbb{B} \\
+    \nabla \left(\nabla \cdot \mathbb{E}\right) - \nabla^2 \mathbb{E}
+        &= - \frac{\partial}{\partial t} \frac{\partial}{\partial t} \mu \epsilon \mathbb{E} \\
+    - \nabla^2 \mathbb{E}
+        &= - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{E} \\
+    \nabla^2 \mathbb{E} - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{E}
+        &= ０ \qquad \cdots Holmheltz \ eq \\
+\end{align*}
+
+$\mathbb{E} \propto e^{j\omega t}$より、$\frac{\partial}{\partial t} = j\omega$とおくと
+Holmheltz方程式は
+$$
+\nabla^2 \mathbb{E} + \omega^2 \mu \epsilon \mathbb{E} = ０
+$$
+
+$\mathbb{E}$のz成分について
+$$
+\left( 
+    \frac{\partial^2}{\partial x^2} 
+    + \frac{\partial^2}{\partial y^2} 
+    + \frac{\partial^2}{\partial z^2} 
+\right) E_z
++ \omega^2 \mu \epsilon E_z
+= 0
+$$
+
+z方向伝搬より $$E_z \propto e^{-\gamma z} = e^{-(\alpha + j \beta)z}$$ \\
+無損失を仮定すると $\alpha = 0$なので $$E_z \propto e^{ -j \beta z}$$ \\
+したがって、$ \frac{\partial}{\partial z} = -j \beta $ とすると、
+Holmheltz方程式は
+\begin{align*} 
+\left( 
+    \frac{\partial^2}{\partial x^2} 
+    + \frac{\partial^2}{\partial y^2} 
+    - \beta^2 
+    + \omega^2 \mu \epsilon
+\right) E_z
+&= 0 \\
+\left( 
+    \frac{\partial^2}{\partial x^2} 
+    + \frac{\partial^2}{\partial y^2} 
+    + k_c^2
+\right) E_z
+&= 0 \qquad
+\because \ k_c^2 = \omega^2 \mu \epsilon - \beta^2 \\
+\end{align*}
+
+また、スラブなので$\frac{\partial}{\partial y} = 0$とすると
+\begin{align*} 
+    \left( 
+        \frac{\partial^2}{\partial x^2} + k_c^2
+    \right) E_z
+    &= 0 \\
+\end{align*}
+
+したがって、
+$$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
+
+境界条件 $x = 0$で$E_z = 0$ より
+\begin{align*}
+    E_z|_{x=0} &= A \sin k_c 0 + B \cos k_c 0 \\
+             &= B \\ 
+             &= 0 \\
+    E_z &= A \sin k_c x
+\end{align*}
+
+また、真空中の場合、電場のz成分は
+\begin{align*}
+    E_{0z} & = A^\prime \sin k_{0c} x + B^\prime \cos k_{0c} x
+            \qquad (A^\prime, B^\prime : const) \\
+           & = C \sin (k_{0c} x + \phi)
+           \qquad (C, \phi : const) \\
+           \\
+    & k_{0c}^2 = \omega^2 \mu_0 \epsilon_0 - \beta^2 \\
+\end{align*}
+
+境界条件 $x=a$で$ E_z = E_{0z} $となるので
+\begin{align*}
+    E_z |_{x=a} &= E_{0z} |_{x=a} \\
+    A \sin k_c a &= C \sin (k_{0c} a + \phi) \\
+\end{align*}
+
+%===========================================================================
+% \cite{aaa}
+% \begin{thebibliography}
+%     \bibitem{aaa} aaa \url{url}
+% \end{thebibliography}
+
+% \begin{table}[htb]  
+%     \centering
+%     \caption{table}
+%     \begin{tabular}{|c|c|c|} \hline
+%         a & b & c \\\hline
+%         1 & 2 & 3 \\\hline
+%     \end{tabular}
+% \end{table}
+
+%   \begin{figure}[h]
+%       \centering
+%       \includegraphics[width=0.7\textwidth]{  }
+%       \caption{}
+%       \label{fig:}
+%   \end{figure}
+  
+\end{document}
