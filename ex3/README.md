@@ -1,6 +1,6 @@
 # (1) 誘電体スラブの分散関係式を解析的に求める
 
-[PDF](/tex/dispersion_relation.pdf)
+[PDF](ex3/tex/dispersion_relation.tex)
 
 # (2) 分散関係式を数値計算により解き、分散曲線をグラフに描く
 
