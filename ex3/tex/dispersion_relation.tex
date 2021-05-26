@@ -101,21 +101,58 @@ $$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
     E_z &= A \sin k_c x
 \end{align*}
 
-また、真空中の場合、電場のz成分は
+また真空中の場合、
+電場のz成分についてのHolmheltz方程式は以下のようになる。
 \begin{align*}
-    E_{0z} & = A^\prime \sin k_{0c} x + B^\prime \cos k_{0c} x
-            \qquad (A^\prime, B^\prime : const) \\
-           & = C \sin (k_{0c} x + \phi)
-           \qquad (C, \phi : const) \\
-           \\
-    & k_{0c}^2 = \omega^2 \mu_0 \epsilon_0 - \beta^2 \\
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + \frac{\partial^2}{\partial y^2} 
+        + \frac{\partial^2}{\partial z^2} 
+    \right) E_z
+    + \omega^2 \mu_0 \epsilon_0 E_z
+    & = 0
 \end{align*}
 
-境界条件 $x=a$で$ E_z = E_{0z} $となるので
+誘電体スラブ中と同様に$\frac{\partial}{\partial y} = 0$とすると
 \begin{align*}
-    E_z |_{x=a} &= E_{0z} |_{x=a} \\
-    A \sin k_c a &= C \sin (k_{0c} a + \phi) \\
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + \frac{\partial^2}{\partial z^2} 
+    \right) E_z
+    + k_0^2 E_z
+    & = 0 \qquad
+    \because \ k_0^2 = \omega^2 \mu_0 \epsilon_0
 \end{align*}
+
+変数分離法より $ E_z = X(x) Z(z) $ とおくと
+\begin{align*}
+      Z \frac{\partial^2 X}{\partial x^2} 
+    + X \frac{\partial^2 Z}{\partial z^2}
+    + k_0^2 X Z
+    & = 0 \\
+      \frac{1}{X} \frac{\partial^2 X}{\partial x^2} 
+    + \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2}
+    + k_0^2
+    & = 0 \\
+    \begin{cases}
+        \frac{1}{X} \frac{\partial^2 X}{\partial x^2} + k_x^2 &= 0 \\
+        \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} + k_z^2 &= 0 
+    \end{cases} & \qquad
+    ( k_0^2 = k_x^2 + k_z^2 ) \\
+    \begin{cases}
+        \frac{\partial^2 X}{\partial x^2} + k_x^2 X &= 0 \\
+        \frac{\partial^2 Z}{\partial z^2} + k_z^2 Z &= 0 
+    \end{cases} & \\
+    \begin{cases}
+        X &= C \sin k_x x \\
+        Z &= D e^{-jk_z z} 
+    \end{cases} & \\
+    \\
+    \therefore E_z 
+        = C \sin k_x x \cdot D e^{-jk_z z} & \\
+        = C^\prime e^{-jk_z z} \sin k_x x & \qquad (C^\prime = C \cdot D : const)
+\end{align*}
+
 
 %===========================================================================
 % \cite{aaa}
