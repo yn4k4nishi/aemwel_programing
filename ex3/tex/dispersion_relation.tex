@@ -167,6 +167,37 @@ $x=a$での境界条件より、真空中の電場と誘電体中の電場は連
     \because \ C_0 = \frac{C^\prime}{A}
 \end{align*}
 
+%======== wip ==========%
+
+$E_z$の一般解は
+\begin{align*}
+    E_z &= C e^{j k_0 x} \\
+        &= C \cos k_0 x + j C \sin k_0 x
+\end{align*}
+境界条件
+\begin{align*}
+    A \sin k_c a &= C \cos k_0 a + j C \sin k_0 a \\
+    \\
+    A \sin k_c a &= C \cos k_0 a \\
+    C \sin k_0 a &= 0 \\
+    \\
+    A \sin (\omega^2 \mu \epsilon a - \beta^2a)
+        &= C \cos (\omega^2 \mu_0 \epsilon_0 a - \beta^2a) \\
+    A \sin (\omega^2 \mu \epsilon a) \cos (\beta^2a)
+        - A \sin (\beta^2a) \cos (\omega^2 \mu \epsilon a)
+    &= C \cos (\omega^2 \mu_0 \epsilon_0 a) \cos (\beta^2a) 
+        + C \sin (\omega^2 \mu_0 \epsilon_0 a) \sin (\beta^2a) \\
+    \cos (\beta^2a) \left[
+        A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)
+    \right]
+    &= \sin (\beta^2a) \left[
+        A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)
+    \right] \\
+    \frac{\sin (\beta^2a)}{\cos (\beta^2a)}
+    &= \frac{A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)}{A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)} \\
+    \tan \beta^2a
+    &= \frac{A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)}{A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)} \\
+\end{align*}
 
 %===========================================================================
 % \cite{aaa}
