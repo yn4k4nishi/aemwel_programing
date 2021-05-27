@@ -157,6 +157,14 @@ $$\lim_{x \to \infty} E_z = 0$$
 $x=a$での境界条件より、真空中の電場と誘電体中の電場は連続なので
 \begin{align*}
     A \sin k_c a & = C^\prime e^{- k_0 a} \\
+    \sin k_c a & = \frac{C^\prime}{A} e^{- k_0 a} \\
+    k_c a & = \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
+    k_c & = \frac{1}{a} \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
+    \omega^2 \mu \epsilon - \beta^2 &= 
+        \left[ 
+            \frac{1}{a} \sin^{-1} \left( C_0 e^{- k_0 a} \right)
+        \right]^2 \qquad
+    \because \ C_0 = \frac{C^\prime}{A}
 \end{align*}
 
 
