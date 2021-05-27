@@ -82,7 +82,7 @@ Holmheltz方程式は
 \because \ k_c^2 = \omega^2 \mu \epsilon - \beta^2 \\
 \end{align*}
 
-また、y方向に無限なスラブとすると$\frac{\partial}{\partial y} = 0$となる。
+また、y方向に無限なスラブと仮定すると$\frac{\partial}{\partial y} = 0$となる。
 \begin{align*} 
     \left( 
         \frac{\partial^2}{\partial x^2} + k_c^2
@@ -107,7 +107,7 @@ $$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
     \left( 
         \frac{\partial^2}{\partial x^2} 
         + \frac{\partial^2}{\partial y^2} 
-        + \frac{\partial^2}{\partial z^2} 
+        - \beta^2
     \right) E_z
     + \omega^2 \mu_0 \epsilon_0 E_z
     & = 0
@@ -117,40 +117,45 @@ $$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
 \begin{align*}
     \left( 
         \frac{\partial^2}{\partial x^2} 
-        + \frac{\partial^2}{\partial z^2} 
+        + \omega^2 \mu_0 \epsilon_0 - \beta^2 
     \right) E_z
-    + k_0^2 E_z
+    & = 0 \\
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + k_0^2
+    \right) E_z
     & = 0 \qquad
-    \because \ k_0^2 = \omega^2 \mu_0 \epsilon_0
+    \because \ k_0^2 = \omega^2 \mu_0 \epsilon_0 - \beta^2 \\
 \end{align*}
 
-変数分離法より $ E_z = X(x) Z(z) $ とおくと
+$k_0^2 > 0$の場合、
 \begin{align*}
-      Z \frac{\partial^2 X}{\partial x^2} 
-    + X \frac{\partial^2 Z}{\partial z^2}
-    + k_0^2 X Z
-    & = 0 \\
-      \frac{1}{X} \frac{\partial^2 X}{\partial x^2} 
-    + \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2}
-    + k_0^2
-    & = 0 \\
-    \begin{cases}
-        \frac{1}{X} \frac{\partial^2 X}{\partial x^2} + k_x^2 &= 0 \\
-        \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} + k_z^2 &= 0 
-    \end{cases} & \qquad
-    ( k_0^2 = k_x^2 + k_z^2 ) \\
-    \begin{cases}
-        \frac{\partial^2 X}{\partial x^2} + k_x^2 X &= 0 \\
-        \frac{\partial^2 Z}{\partial z^2} + k_z^2 Z &= 0 
-    \end{cases} & \\
-    \begin{cases}
-        X &= C \sin k_x x \\
-        Z &= D e^{-jk_z z} 
-    \end{cases} & \\
-    \\
-    \therefore E_z 
-        = C \sin k_x x \cdot D e^{-jk_z z} & \\
-        = C^\prime e^{-jk_z z} \sin k_x x & \qquad (C^\prime = C \cdot D : const)
+    E_z &= C e^{j k_0 x} \\
+        &= C \cos k_0 x + j C \sin k_0 x
+\end{align*}
+
+$k_0^2 < 0$の場合、$k_0^2 = - k_0^{\prime 2}$ とすると
+\begin{align*}
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + k_0^2
+    \right) E_z
+    & =
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        - k_0^{\prime 2}
+    \right) E_z
+    = 0 \\
+    E_z &= C^\prime e^{- k_0^\prime x}
+\end{align*}
+
+真空中の境界条件 
+$$\lim_{x \to \infty} E_z = 0$$
+より、$k_0^2 < 0$の場合が適切である。
+
+$x=a$での境界条件より、真空中の電場と誘電体中の電場は連続なので
+\begin{align*}
+    A \sin k_c a & = C^\prime e^{- k_0 a} \\
 \end{align*}
 
 
