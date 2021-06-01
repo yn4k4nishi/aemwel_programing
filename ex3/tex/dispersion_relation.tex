@@ -128,6 +128,7 @@ $$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
     \because \ k_0^2 = \omega^2 \mu_0 \epsilon_0 - \beta^2 \\
 \end{align*}
 
+真空中の$E_z$の一般解は、
 $k_0^2 > 0$の場合、
 \begin{align*}
     E_z &= C e^{j k_0 x} \\
@@ -150,11 +151,19 @@ $k_0^2 = - k_0^{\prime 2} = - \omega^2 \mu_0 \epsilon_0 + \beta^2$ とすると
     E_z &= C^\prime e^{- k_0^\prime x}
 \end{align*}
 
-$x=a$での境界条件より、真空中の電場と誘電体中の電場は連続なので、
+ここで、$x \rightarrow \infty$の境界条件を考えると
+$$ \lim_{x \to \infty} E_z = 0 $$
+となるため、
+一般解は
+$$
+E_z = C^\prime e^{-k_0^\prime x} \qquad 
+( k_0^{\prime 2} = - \omega^2 \mu_0 \epsilon_0 + \beta^2 > 0 )
+$$
 
-$k_0^2 < 0$のとき
+$x=a$での境界条件より、真空中の電場と誘電体中の電場は連続なので、
 \begin{align*}
     A \sin k_c a & = C^\prime e^{- k_0 a} \\
+    A \sin (\sqrt{\omega^2 \mu \epsilon - \beta^2}a) & = C^\prime e^{- \sqrt{-\omega^2 \mu_0 \epsilon_0 + \beta^2} a} \\
     \sin k_c a & = \frac{C^\prime}{A} e^{- k_0 a} \\
     k_c a & = \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
     k_c & = \frac{1}{a} \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
@@ -163,40 +172,6 @@ $k_0^2 < 0$のとき
             \frac{1}{a} \sin^{-1} \left( C_0 e^{- k_0 a} \right)
         \right]^2 \qquad
     \because \ C_0 = \frac{C^\prime}{A}
-\end{align*}
-
-$k_0^2 > 0$のとき
-\begin{align*}
-    E_z &= C e^{j k_0 x} \\
-        &= C \cos k_0 x + j C \sin k_0 x
-\end{align*}
-
-\begin{align*}
-    A \sin k_c a &= C \cos k_0 a + j C \sin k_0 a \\
-    \\
-    A \sin k_c a &= C \cos k_0 a \\
-    C \sin k_0 a &= 0 \\
-    \\
-    A \sin (\omega^2 \mu \epsilon a - \beta^2a)
-        &= C \cos (\omega^2 \mu_0 \epsilon_0 a - \beta^2a) \\
-    A \sin (\omega^2 \mu \epsilon a) \cos (\beta^2a)
-        - A \sin (\beta^2a) \cos (\omega^2 \mu \epsilon a)
-    &= C \cos (\omega^2 \mu_0 \epsilon_0 a) \cos (\beta^2a) 
-        + C \sin (\omega^2 \mu_0 \epsilon_0 a) \sin (\beta^2a) \\
-    \cos (\beta^2a) \left[
-        A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)
-    \right]
-    &= \sin (\beta^2a) \left[
-        A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)
-    \right] \\
-    \frac{\sin (\beta^2a)}{\cos (\beta^2a)}
-    &= \frac{A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)}{A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)} \\
-    \tan \beta^2a
-    &= \frac{A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)}{A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)} \\
-    \beta^2a
-    &= \tan^{-1} \left[
-        \frac{A \sin (\omega^2 \mu \epsilon a) - C \cos(\omega^2 \mu_0 \epsilon_0 a)}{A \cos (\omega^2 \mu \epsilon a) + C \sin (\omega^2 \mu_0 \epsilon_0 a)}
-    \right] \\
 \end{align*}
 
 %===========================================================================
