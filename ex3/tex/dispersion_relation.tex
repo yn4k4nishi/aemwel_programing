@@ -28,7 +28,8 @@ $\rho = 0$とすると、Maxwell方程式は
 \begin{eqnarray}
     \nabla \times \mathbb{E} &=& - \frac{\partial}{\partial t} \mathbb{B} \\
     \nabla \times \mathbb{B} &=&  \frac{\partial}{\partial t} \mu \epsilon \mathbb{E} \\
-    \nabla \cdot \mathbb{E} &=& \frac{\rho}{\epsilon} = 0
+    \nabla \cdot \mathbb{E} &=& \frac{\rho}{\epsilon} = 0 \\
+    \nabla \cdot \mathbb{B} &=& 0
 \end{eqnarray}
 となる。
 
@@ -41,137 +42,224 @@ $\rho = 0$とすると、Maxwell方程式は
     - \nabla^2 \mathbb{E}
         &= - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{E} \\
     \nabla^2 \mathbb{E} - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{E}
-        &= ０ \qquad \cdots Holmheltz \ eq \\
+        &= ０ \tag{5} \\
 \end{align*}
 
-$\mathbb{E} \propto e^{j\omega t}$より、$\frac{\partial}{\partial t} = j\omega$とおくと
-Holmheltz方程式は
-$$
-\nabla^2 \mathbb{E} + \omega^2 \mu \epsilon \mathbb{E} = ０
-$$
+(2)の両辺で回転を取ると
+\begin{align*}
+    \nabla \times \left(\nabla \times \mathbb{B}\right)
+        &= \mu \epsilon \frac{\partial}{\partial t} \nabla \times \mathbb{E} \\
+    \nabla(\nabla \cdot \mathbb{B}) - \nabla^2 \mathbb{B}
+        &= - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{B} \\
+    \nabla^2 \mathbb{B} - \mu \epsilon \frac{\partial^2}{\partial t^2} \mathbb{B} 
+        &= 0 \tag{6} \\
+\end{align*}
 
-$\mathbb{E}$のz成分について
-$$
-\left( 
-    \frac{\partial^2}{\partial x^2} 
-    + \frac{\partial^2}{\partial y^2} 
-    + \frac{\partial^2}{\partial z^2} 
-\right) E_z
-+ \omega^2 \mu \epsilon E_z
-= 0
-$$
+$\frac{\partial}{\partial t} = j\omega$とすると式(5)(6)の Holmheltz方程式は
+\begin{align*}
+    \nabla^2 \mathbb{E} + \omega^2 \mu \epsilon \mathbb{E} &= ０ \\
+    \nabla^2 \mathbb{B} + \omega^2 \mu \epsilon \mathbb{B} &= ０ \\
+\end{align*}
+
+TMモードより $E_x = E_y = 0, H_z = 0$
+\begin{align*}
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + \frac{\partial^2}{\partial y^2} 
+        + \frac{\partial^2}{\partial z^2} 
+    \right) E_z
+    + \omega^2 \mu \epsilon E_z
+    &= 0    
+\end{align*}
 
 z方向伝搬より $$E_z \propto e^{-\gamma z} = e^{-(\alpha + j \beta)z}$$ \\
 無損失を仮定すると $\alpha = 0$なので $$E_z \propto e^{ -j \beta z}$$ \\
-したがって、$ \frac{\partial}{\partial z} = -j \beta $ とすると、
-Holmheltz方程式は
+したがって、$ \frac{\partial}{\partial z} = -j \beta $ とすると
 \begin{align*} 
-\left( 
-    \frac{\partial^2}{\partial x^2} 
-    + \frac{\partial^2}{\partial y^2} 
-    - \beta^2 
-    + \omega^2 \mu \epsilon
-\right) E_z
-&= 0 \\
-\left( 
-    \frac{\partial^2}{\partial x^2} 
-    + \frac{\partial^2}{\partial y^2} 
-    + k_c^2
-\right) E_z
-&= 0 \qquad
-\because \ k_c^2 = \omega^2 \mu \epsilon - \beta^2 \\
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + \frac{\partial^2}{\partial y^2} 
+        - \beta^2 
+    \right) E_z
+    + \omega^2 \mu \epsilon E_z
+    &= 0
 \end{align*}
 
 また、y方向に無限なスラブと仮定すると$\frac{\partial}{\partial y} = 0$となる。
 \begin{align*} 
     \left( 
-        \frac{\partial^2}{\partial x^2} + k_c^2
+        \frac{\partial^2}{\partial x^2} 
+        - \beta^2 
     \right) E_z
-    &= 0 \\
+    + \omega^2 \mu \epsilon E_z
+    &= 0
 \end{align*}
 
-したがって、
-$$ E_z = A \sin k_c x + B \cos k_c x \qquad (A,B : const) $$
+$k^2 = -\beta^2 + \omega^2 \mu \epsilon$とおくと
+\begin{align*} 
+    \left( 
+        \frac{\partial^2}{\partial x^2} 
+        + k^2 
+    \right) E_z
+    &= 0
+\end{align*}
+
+したがって、誘電体中の$E_z$の一般解は
+$$ E_z = A \sin k x + B \cos k x \qquad (A,B : const) $$
+
+式(1)より
+\begin{align*}
+    \nabla \times \mathbb{E} 
+    & = \begin{bmatrix}
+        \frac{\partial}{\partial x}\\
+        \frac{\partial}{\partial y}\\
+        \frac{\partial}{\partial z}
+    \end{bmatrix} \times
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        A \sin k x + B \cos k x
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        \frac{\partial}{\partial y}(A \sin k x + B \cos k x) \\
+        - \frac{\partial}{\partial x}(A \sin k x + B \cos k x) \\
+        0 
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        0 \\
+        - k A \cos kx + k B \sin kx \\
+        0 
+    \end{bmatrix} \\
+    &= - \frac{\partial}{\partial t} \mathbb{B} \\
+    &= - j \omega \mathbb{B} \\
+    \\
+    j \omega B_y &= kA\cos kx - kB\sin kx \\
+    B_y &= \frac{k}{j \omega} (A \cos kx - B \sin kx) \\
+    H_y &= \frac{k}{j \omega \mu} (A \cos kx - B \sin kx) \\
+    \\
+    j \omega B_x &= 0 \\
+    H_x &= 0 \\
+\end{align*}
+
+誘電体中での一般解をまとめると
+\begin{align*}
+    \begin{cases}
+        E_x &= 0 \\
+        E_y &= 0 \\
+        E_z &= A \sin k x + B \cos k x
+    \end{cases} \qquad
+    \begin{cases}
+        H_x &= 0\\
+        H_y &= \frac{k}{j \omega \mu} (A \cos kx - B \sin kx)\\
+        H_z &= 0
+    \end{cases}
+\end{align*}
 
 境界条件 $x = 0$で$E_z = 0$ より
 \begin{align*}
-    E_z|_{x=0} &= A \sin k_c 0 + B \cos k_c 0 \\
-             &= B \\ 
-             &= 0 \\
-    E_z &= A \sin k_c x
+    E_z|_{x=0} &= A \sin k 0 + B \cos k 0 \\
+             &= B = 0 
+\end{align*}
+よって
+\begin{align*}
+    \begin{cases}
+        E_x &= 0 \\
+        E_y &= 0 \\
+        E_z &= A \sin k x
+    \end{cases} \qquad
+    \begin{cases}
+        H_x &= 0\\
+        H_y &= \frac{k}{j \omega \mu} A \cos kx \\
+        H_z &= 0
+    \end{cases}
 \end{align*}
 
-また真空中の場合、
-電場のz成分についてのHolmheltz方程式は以下のようになる。
+また、真空中の場合、(5)(6)のHolmheltz方程式は
 \begin{align*}
-    \left( 
-        \frac{\partial^2}{\partial x^2} 
-        + \frac{\partial^2}{\partial y^2} 
-        - \beta^2
-    \right) E_z
-    + \omega^2 \mu_0 \epsilon_0 E_z
-    & = 0
+    \nabla^2 \mathbb{E} + \omega^2 \mu_0 \epsilon_0 \mathbb{E} &= ０ \\
+    \nabla^2 \mathbb{B} + \omega^2 \mu_0 \epsilon_0 \mathbb{B} &= ０ \\
 \end{align*}
 
-誘電体スラブ中と同様に$\frac{\partial}{\partial y} = 0$とすると
+誘電体スラブ中と同様に$E_z$について解くと
 \begin{align*}
-    \left( 
-        \frac{\partial^2}{\partial x^2} 
-        + \omega^2 \mu_0 \epsilon_0 - \beta^2 
-    \right) E_z
-    & = 0 \\
-    \left( 
-        \frac{\partial^2}{\partial x^2} 
-        + k_0^2
-    \right) E_z
-    & = 0 \qquad
-    \because \ k_0^2 = \omega^2 \mu_0 \epsilon_0 - \beta^2 \\
+    ( \frac{\partial^2}{\partial x^2} - \beta^2)E_z + \omega^2 \mu_0 \epsilon_0 E_z &= 0
 \end{align*}
 
-真空中の$E_z$の一般解は、
-$k_0^2 > 0$の場合、
+ここで$k_0^2 = \beta^2 - \omega \mu_0 \epsilon_0$とすると
 \begin{align*}
-    E_z &= C e^{j k_0 x} \\
-        &= C \cos k_0 x + j C \sin k_0 x
+    ( \frac{\partial^2}{\partial x^2} - k_0^2)E_z &= 0 \\
+    E_z &= C e^{\pm k_0 (x - a)} \qquad ( C : const)
 \end{align*}
 
-$k_0^2 < 0$の場合、
-$k_0^2 = - k_0^{\prime 2} = - \omega^2 \mu_0 \epsilon_0 + \beta^2$ とすると
+$x \rightarrow \infty$の境界条件を考えると
+$$ \lim_{x \to \infty} E_z = 0 $$ より
+$$ E_z = C e^{- k_0 (x - a)} $$
+
+式(1)より
 \begin{align*}
-    \left( 
-        \frac{\partial^2}{\partial x^2} 
-        + k_0^2
-    \right) E_z
-    & =
-    \left( 
-        \frac{\partial^2}{\partial x^2} 
-        - k_0^{\prime 2}
-    \right) E_z
-    = 0 \\
-    E_z &= C^\prime e^{- k_0^\prime x}
+    \nabla \times \mathbb{E} 
+    & = \begin{bmatrix}
+        \frac{\partial}{\partial x}\\
+        \frac{\partial}{\partial y}\\
+        \frac{\partial}{\partial z}
+    \end{bmatrix} \times
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        C e^{- k_0 (x - a)}
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        \frac{\partial}{\partial y} C e^{- k_0 (x - a)} \\
+        -\frac{\partial}{\partial x} C e^{- k_0 (x - a)}\\
+        0
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        0 \\
+        k_0 C e^{- k_0 (x - a)}\\
+        0
+    \end{bmatrix} \\
+    &= -j \omega \mathbb{B} \\
+    \\
+    j\omega B_x &= 0 \\
+    H_x &= 0 \\
+    \\
+    j\omega B_y &= k_0 C e^{- k_0 (x - a)} \\
+    B_y &= \frac{k_0}{j\omega} C e^{- k_0 (x - a)} \\
+    H_y &= \frac{k_0}{j\omega\mu_0} C e^{- k_0 (x - a)}
 \end{align*}
 
-ここで、$x \rightarrow \infty$の境界条件を考えると
-$$ \lim_{x \to \infty} E_z = 0 $$
-となるため、
-一般解は
-$$
-E_z = C^\prime e^{-k_0^\prime x} \qquad 
-( k_0^{\prime 2} = - \omega^2 \mu_0 \epsilon_0 + \beta^2 > 0 )
-$$
-
-$x=a$での境界条件より、真空中の電場と誘電体中の電場は連続なので、
+真空中の一般解をまとめると
 \begin{align*}
-    A \sin k_c a & = C^\prime e^{- k_0 a} \\
-    A \sin (\sqrt{\omega^2 \mu \epsilon - \beta^2}a) & = C^\prime e^{- \sqrt{-\omega^2 \mu_0 \epsilon_0 + \beta^2} a} \\
-    \sin k_c a & = \frac{C^\prime}{A} e^{- k_0 a} \\
-    k_c a & = \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
-    k_c & = \frac{1}{a} \sin^{-1} \left( \frac{C^\prime}{A} e^{- k_0 a} \right) \\
-    \omega^2 \mu \epsilon - \beta^2 &= 
-        \left[ 
-            \frac{1}{a} \sin^{-1} \left( C_0 e^{- k_0 a} \right)
-        \right]^2 \qquad
-    \because \ C_0 = \frac{C^\prime}{A}
+    \begin{cases}
+        E_x &= 0 \\
+        E_y &= 0 \\
+        E_z &= C e^{- k_0 (x - a)}
+    \end{cases} \qquad
+    \begin{cases}
+        H_x &= 0 \\
+        H_y &= \frac{k_0}{j\omega\mu_0} C e^{- k_0 (x - a)} \\
+        H_z &= 0
+    \end{cases}
+\end{align*}
+
+$x=a$での境界条件より、真空中と誘電体中は連続なので
+\begin{align*}
+    \begin{cases}
+        E_z |_{x=a} &= A \sin ka = C e^{-k_0(a-a)} \\
+        H_y |_{x=a} &= \frac{k}{j\omega \mu} A \cos ka = \frac{k_0}{j\omega \mu_0} C e^{-k_0(a-a)}
+    \end{cases} \\
+\end{align*}
+\begin{align*}
+    C &= A \sin ka \\
+    \frac{k}{j\omega \mu} A \cos ka &= \frac{k_0}{j\omega \mu_0} A \sin ka \\
+    \frac{\sin ka}{\cos ka} &= \frac{k}{j\omega \mu} \frac{j\omega \mu_0}{k_0}\\
+    \tan ka &= \frac{\mu_0}{\mu} \frac{k}{k_0}
+\end{align*}
+
+$\mu = \mu_0$とすると
+\begin{align*}
+    \tan ka &= \frac{k}{k_0}\\
+    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}}
 \end{align*}
 
 %===========================================================================
