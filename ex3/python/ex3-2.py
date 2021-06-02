@@ -5,9 +5,11 @@ import matplotlib.pyplot as plt
 import time
 import tqdm
 
+# パラメータ
+eps_r = 3.2 
+
 # 分散曲線の関数
 def f(x,y):
-    eps_r = 3.2 
 
     if (-x**2 + eps_r * y**2) < 0:
         return False
@@ -66,6 +68,12 @@ def main():
                     plt.scatter(x, ans, color="b")
             y_0 = y
 
+    # 真空の場合
+    x_ = np.linspace(0,15,50)
+    plt.plot(x_, x_, label='vaccum')
+    plt.plot(x_, x_/np.sqrt(eps_r), label='dielectric')
+
+    plt.legend()
     plt.show()
 
     # 実行時間
