@@ -51,10 +51,10 @@ def main():
 
     start = time.time() # 時間計測 開始
 
-    for x in tqdm.tqdm(np.linspace(0,100,100)): # xを固定
+    for x in tqdm.tqdm(np.linspace(0,15,50)): # xを固定
 
         y_0 = 0 # 一つ前のyの値
-        for y in np.linspace(0,100,100): # yの値を動かして解を探す
+        for y in np.linspace(0,10,100): # yの値を動かして解を探す
             if (f(x, y_0) == False) or (f(x, y_0) == False) :
                 y_0 = y
                 continue
@@ -63,7 +63,7 @@ def main():
                 success, ans = dichotomy(x, y_0, y, error)
                 if success:
                     # print( "x={} , y={} , error={}".format(x, ans, f(x,ans)) )
-                    plt.scatter(x, ans)
+                    plt.scatter(x, ans, color="b")
             y_0 = y
 
     plt.show()
