@@ -57,7 +57,7 @@ def main():
 
         y_0 = 0 # 一つ前のyの値
         for y in np.linspace(0,10,100): # yの値を動かして解を探す
-            if (f(x, y_0) == False) or (f(x, y_0) == False) :
+            if (f(x, y_0) == False) or (f(x, y) == False) :
                 y_0 = y
                 continue
 
