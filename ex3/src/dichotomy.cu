@@ -52,6 +52,6 @@ bool dichotomy(double x, double min_y, double max_y, double error, double *ans){
         num ++;
     }
 
-    f(x, mid_y, ans);
+    *ans = mid_y;
     return true;
 }
