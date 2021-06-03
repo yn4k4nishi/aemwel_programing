@@ -61,27 +61,27 @@ $\frac{\partial}{\partial t} = j\omega$とすると式(5)(6)の Holmheltz方程�
     \nabla^2 \mathbb{B} + \omega^2 \mu \epsilon \mathbb{B} &= ０ \\
 \end{align*}
 
-TMモードより $E_x = E_y = 0, H_z = 0$
+TMモードより $E_z \neq 0, H_z = 0$
 \begin{align*}
     \left( 
         \frac{\partial^2}{\partial x^2} 
         + \frac{\partial^2}{\partial y^2} 
         + \frac{\partial^2}{\partial z^2} 
-    \right) E_z
-    + \omega^2 \mu \epsilon E_z
+    \right) H_y
+    + \omega^2 \mu \epsilon H_y
     &= 0    
 \end{align*}
 
-z方向伝搬より $$E_z \propto e^{-\gamma z} = e^{-(\alpha + j \beta)z}$$ \\
-無損失を仮定すると $\alpha = 0$なので $$E_z \propto e^{ -j \beta z}$$ \\
+z方向伝搬より $$H_y \propto e^{-\gamma z} = e^{-(\alpha + j \beta)z}$$ \\
+無損失を仮定すると $\alpha = 0$なので $$H_y \propto e^{ -j \beta z}$$ \\
 したがって、$ \frac{\partial}{\partial z} = -j \beta $ とすると
 \begin{align*} 
     \left( 
         \frac{\partial^2}{\partial x^2} 
         + \frac{\partial^2}{\partial y^2} 
         - \beta^2 
-    \right) E_z
-    + \omega^2 \mu \epsilon E_z
+    \right) H_y
+    + \omega^2 \mu \epsilon H_y
     &= 0
 \end{align*}
 
@@ -90,8 +90,8 @@ z方向伝搬より $$E_z \propto e^{-\gamma z} = e^{-(\alpha + j \beta)z}$$ \\
     \left( 
         \frac{\partial^2}{\partial x^2} 
         - \beta^2 
-    \right) E_z
-    + \omega^2 \mu \epsilon E_z
+    \right) H_y
+    + \omega^2 \mu \epsilon H_y
     &= 0
 \end{align*}
 
@@ -100,16 +100,16 @@ $k^2 = -\beta^2 + \omega^2 \mu \epsilon$とおくと
     \left( 
         \frac{\partial^2}{\partial x^2} 
         + k^2 
-    \right) E_z
+    \right) H_y
     &= 0
 \end{align*}
 
-したがって、誘電体中の$E_z$の一般解は
-$$ E_z = A \sin k x + B \cos k x \qquad (A,B : const) $$
+したがって、誘電体中の$H_y$の一般解は
+$$ H_y = A \sin k x + B \cos k x \qquad (A,B : const) $$
 
 式(1)より
 \begin{align*}
-    \nabla \times \mathbb{E} 
+    \nabla \times \mathbb{B} 
     & = \begin{bmatrix}
         \frac{\partial}{\partial x}\\
         \frac{\partial}{\partial y}\\
@@ -117,59 +117,63 @@ $$ E_z = A \sin k x + B \cos k x \qquad (A,B : const) $$
     \end{bmatrix} \times
     \begin{bmatrix}
         0 \\
-        0 \\
-        A \sin k x + B \cos k x
-    \end{bmatrix} \\
-    & = \begin{bmatrix}
-        \frac{\partial}{\partial y}(A \sin k x + B \cos k x) \\
-        - \frac{\partial}{\partial x}(A \sin k x + B \cos k x) \\
+        \mu A \sin k x + \mu B \cos k x \\
         0 
     \end{bmatrix} \\
     & = \begin{bmatrix}
+        - \frac{\partial}{\partial z}(\mu A \sin k x + \mu B \cos k x) \\
         0 \\
-        - k A \cos kx + k B \sin kx \\
-        0 
+        \frac{\partial}{\partial x}(\mu A \sin k x + \mu B \cos k x)
     \end{bmatrix} \\
-    &= - \frac{\partial}{\partial t} \mathbb{B} \\
-    &= - j \omega \mathbb{B} \\
+    & = \begin{bmatrix}
+        j \mu \beta A \sin k x + j \mu \beta B \cos k x \\
+        0 \\
+        - \mu k A \cos kx + \mu k B \sin kx 
+    \end{bmatrix} \\
+    &= \frac{\partial}{\partial t} \mu \epsilon \mathbb{E} \\
+    &= - j \omega \mu \epsilon \mathbb{E} \\
     \\
-    j \omega B_y &= kA\cos kx - kB\sin kx \\
-    B_y &= \frac{k}{j \omega} (A \cos kx - B \sin kx) \\
-    H_y &= \frac{k}{j \omega \mu} (A \cos kx - B \sin kx) \\
+    -j \omega \mu \epsilon E_x &= j \mu \beta A \sin k x + j \mu \beta B \cos k x \\
+    E_x &= -\frac{\beta}{\omega \epsilon} A \sin k x -\frac{\beta}{\omega \epsilon} B \cos k x \\
     \\
-    j \omega B_x &= 0 \\
-    H_x &= 0 \\
+    E_y &= 0 \\
+    \\
+    -j \omega \mu \epsilon E_z &= - \mu k A \cos kx + \mu k B \sin kx  \\
+    E_z &= \frac{k}{j \omega \epsilon} A \cos kx - \frac{k}{j \omega \epsilon} B \sin kx \\
 \end{align*}
 
 誘電体中での一般解をまとめると
 \begin{align*}
     \begin{cases}
-        E_x &= 0 \\
+        E_x &= -\frac{\beta}{\omega \epsilon} A \sin k x -\frac{\beta}{\omega \epsilon} B \cos k x \\
         E_y &= 0 \\
-        E_z &= A \sin k x + B \cos k x
+        E_z &= \frac{k}{j \omega \epsilon} A \cos kx - \frac{k}{j \omega \epsilon} B \sin kx
     \end{cases} \qquad
     \begin{cases}
-        H_x &= 0\\
-        H_y &= \frac{k}{j \omega \mu} (A \cos kx - B \sin kx)\\
+        H_x &= 0 \\
+        H_y &= A \sin k x + B \cos k x \\
         H_z &= 0
     \end{cases}
 \end{align*}
 
 境界条件 $x = 0$で$E_z = 0$ より
 \begin{align*}
-    E_z|_{x=0} &= A \sin k 0 + B \cos k 0 \\
-             &= B = 0 
+    E_z|_{x=0} 
+        &= \frac{k}{j \omega \epsilon} A \cos 0 - \frac{k}{j \omega \epsilon} B \sin 0 \\
+        &= \frac{k}{j \omega \epsilon} A = 0 \\
+        \\
+    \therefore A &= 0
 \end{align*}
 よって
 \begin{align*}
     \begin{cases}
-        E_x &= 0 \\
+        E_x &= -\frac{\beta}{\omega \epsilon} B \cos k x \\
         E_y &= 0 \\
-        E_z &= A \sin k x
+        E_z &= - \frac{k}{j \omega \epsilon} B \sin kx
     \end{cases} \qquad
     \begin{cases}
-        H_x &= 0\\
-        H_y &= \frac{k}{j \omega \mu} A \cos kx \\
+        H_x &= 0 \\
+        H_y &= B \cos k x \\
         H_z &= 0
     \end{cases}
 \end{align*}
@@ -180,24 +184,24 @@ $$ E_z = A \sin k x + B \cos k x \qquad (A,B : const) $$
     \nabla^2 \mathbb{B} + \omega^2 \mu_0 \epsilon_0 \mathbb{B} &= ０ \\
 \end{align*}
 
-誘電体スラブ中と同様に$E_z$について解くと
+誘電体スラブ中と同様に$H_y$について解くと
 \begin{align*}
-    ( \frac{\partial^2}{\partial x^2} - \beta^2)E_z + \omega^2 \mu_0 \epsilon_0 E_z &= 0
+    ( \frac{\partial^2}{\partial x^2} - \beta^2)H_y + \omega^2 \mu_0 \epsilon_0 H_y &= 0
 \end{align*}
 
 ここで$k_0^2 = \beta^2 - \omega^2 \mu_0 \epsilon_0$とすると
 \begin{align*}
-    ( \frac{\partial^2}{\partial x^2} - k_0^2)E_z &= 0 \\
-    E_z &= C e^{\pm k_0 (x - a)} \qquad ( C : const)
+    ( \frac{\partial^2}{\partial x^2} - k_0^2)H_y &= 0 \\
+    H_y &= C e^{\pm k_0 (x - a)} \qquad ( C : const)
 \end{align*}
 
 $x \rightarrow \infty$の境界条件を考えると
-$$ \lim_{x \to \infty} E_z = 0 $$ より
-$$ E_z = C e^{- k_0 (x - a)} $$
+$$ \lim_{x \to \infty} H_y = 0 $$ より
+$$ H_y = C e^{- k_0 (x - a)} $$
 
 式(1)より
 \begin{align*}
-    \nabla \times \mathbb{E} 
+    \nabla \times \mathbb{B} 
     & = \begin{bmatrix}
         \frac{\partial}{\partial x}\\
         \frac{\partial}{\partial y}\\
@@ -205,39 +209,38 @@ $$ E_z = C e^{- k_0 (x - a)} $$
     \end{bmatrix} \times
     \begin{bmatrix}
         0 \\
-        0 \\
-        C e^{- k_0 (x - a)}
+        \mu_0 C e^{- k_0 (x - a)} \\
+        0 
     \end{bmatrix} \\
     & = \begin{bmatrix}
-        \frac{\partial}{\partial y} C e^{- k_0 (x - a)} \\
-        -\frac{\partial}{\partial x} C e^{- k_0 (x - a)}\\
-        0
-    \end{bmatrix} \\
-    & = \begin{bmatrix}
+        -\frac{\partial}{\partial z} \mu_0 C e^{- k_0 (x - a)} \\
         0 \\
-        k_0 C e^{- k_0 (x - a)}\\
-        0
+        -\frac{\partial}{\partial x} \mu_0 C e^{- k_0 (x - a)}
     \end{bmatrix} \\
-    &= -j \omega \mathbb{B} \\
+    & = \begin{bmatrix}-\frac{\partial}{\partial x}
+        -j\beta \mu_0 C e^{- k_0 (x - a)} \\
+        0 \\
+        k_0 \mu_0 C e^{- k_0 (x - a)}
+    \end{bmatrix} \\
+    &= -j \omega \mu_0 \epsilon_0 \mathbb{E} \\
     \\
-    j\omega B_x &= 0 \\
-    H_x &= 0 \\
+    j\omega \mu_0 \epsilon_0 E_x &= -j\beta \mu_0 C e^{- k_0 (x - a)} \\
+    E_x &= - \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
     \\
-    j\omega B_y &= k_0 C e^{- k_0 (x - a)} \\
-    B_y &= \frac{k_0}{j\omega} C e^{- k_0 (x - a)} \\
-    H_y &= \frac{k_0}{j\omega\mu_0} C e^{- k_0 (x - a)}
+    j\omega \mu_0 \epsilon_0 E_z &= k_0 \mu_0 C e^{- k_0 (x - a)} \\
+    E_z &= \frac{k_0}{j\omega \epsilon_0} C e^{- k_0 (x - a)}
 \end{align*}
 
 真空中の一般解をまとめると
 \begin{align*}
     \begin{cases}
-        E_x &= 0 \\
+        E_x &= - \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
         E_y &= 0 \\
-        E_z &= C e^{- k_0 (x - a)}
+        E_z &= \frac{k_0}{j\omega \epsilon_0} C e^{- k_0 (x - a)}
     \end{cases} \qquad
     \begin{cases}
         H_x &= 0 \\
-        H_y &= \frac{k_0}{j\omega\mu_0} C e^{- k_0 (x - a)} \\
+        H_y &= C e^{- k_0 (x - a)} \\
         H_z &= 0
     \end{cases}
 \end{align*}
@@ -245,36 +248,30 @@ $$ E_z = C e^{- k_0 (x - a)} $$
 $x=a$での境界条件より、真空中と誘電体中は連続なので
 \begin{align*}
     \begin{cases}
-        E_z |_{x=a} &= A \sin ka = C e^{-k_0(a-a)} \\
-        H_y |_{x=a} &= \frac{k}{j\omega \mu} A \cos ka = \frac{k_0}{j\omega \mu_0} C e^{-k_0(a-a)}
+        E_z |_{x=a} &= -\frac{k}{j\omega \epsilon} B \sin ka = \frac{k_0}{j\omega \epsilon_0}C \\
+        H_y |_{x=a} &= B \cos ka = C 
     \end{cases} \\
 \end{align*}
 \begin{align*}
-    C &= A \sin ka \\
-    \frac{k}{j\omega \mu} A \cos ka &= \frac{k_0}{j\omega \mu_0} A \sin ka \\
-    \frac{\sin ka}{\cos ka} &= \frac{k}{j\omega \mu} \frac{j\omega \mu_0}{k_0}\\
-    \tan ka &= \frac{\mu_0}{\mu} \frac{k}{k_0}
-\end{align*}
-
-$\mu = \mu_0$とすると
-\begin{align*}
-    \tan ka &= \frac{k}{k_0}\\
-    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}}
+    -\frac{\epsilon_0}{\epsilon} \frac{k}{k_0} B \sin ka &= B \cos ka \\
+    \tan ka &= - \frac{\epsilon}{\epsilon_0} \frac{k_0}{k}\\
+            &= - \epsilon_r \frac{k_0}{k} \\
+    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= - \epsilon_r \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}}
 \end{align*}
 
 $x = \beta a,\ y = \omega a /c$と規格化すると、
-光速$\frac{1}{c} = \sqrt{\mu \epsilon} $より
+光速$\frac{1}{c} = \sqrt{\mu_0 \epsilon_0} $より
 \begin{align*}
-    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}} \\
-    \tan (\sqrt{-\beta^2 a^2+\omega^2 a^2 \mu \epsilon} ) &= \sqrt{\frac{-\beta^2 a^2 +\omega^2 a^2 \mu \epsilon}{\beta^2 a^2 - \omega^2 a^2 \mu_0 \epsilon_0}} \\
-    \tan (\sqrt{-x^2 + \epsilon_r y^2 } ) &= \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
+    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= - \epsilon_r \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}} \\
+    \tan (\sqrt{-\beta^2 a^2+\omega^2 a^2 \mu \epsilon} ) &= - \epsilon_r \sqrt{\frac{-\beta^2 a^2 +\omega^2 a^2 \mu \epsilon}{\beta^2 a^2 - \omega^2 a^2 \mu_0 \epsilon_0}} \\
+    \tan (\sqrt{-x^2 + \epsilon_r y^2 } ) &= - \epsilon_r \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
 \end{align*} 
 
 比較のため、真空のみの場合を考える
 
 $a \rightarrow 0,\ \epsilon_r = 1$とすると分散関係式は
 \begin{align*}
-    \tan 0 &= \sqrt{\frac{-x^2 + y^2}{ x^2 - y^2}} \\
+    \tan 0 &= - \sqrt{\frac{-x^2 + y^2}{ x^2 - y^2}} \\
     -x^2 + y^2 &= 0 \\
     y^2 &= x^2 \\ 
     y = x
@@ -282,7 +279,7 @@ $a \rightarrow 0,\ \epsilon_r = 1$とすると分散関係式は
 
 また、誘電体のみの場合を考えると、分散関係式は
 \begin{align*}
-    \tan 0 &= \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
+    \tan 0 &= - \epsilon_r \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
     -x^2 + \epsilon_r y^2 &= 0 \\
     y^2 &= x^2 / \epsilon_r \\ 
     y = x / \sqrt{\epsilon_r}
