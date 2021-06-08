@@ -285,6 +285,74 @@ $a \rightarrow 0,\ \epsilon_r = 1$とすると分散関係式は
     y = x / \sqrt{\epsilon_r}
 \end{align*}
 
+\newpage
+
+電磁界分布を求める。
+単位面積あたりの伝送電力で規格化する。
+
+誘電体中のPoyntingベクトルは
+\begin{align*}
+    \mathbb{P} &= 
+    \begin{bmatrix}
+        - \frac{\beta}{\omega \epsilon} B \cos kx \\
+        0 \\
+        -\frac{k}{j\omega \epsilon} B \sin kx
+    \end{bmatrix} \times
+    \begin{bmatrix}
+        0 \\
+        B \cos kx \\
+        0
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \frac{k}{j\omega \epsilon} B \sin kx \cdot B \cos kx \\
+        0 \\
+        - \frac{\beta}{\omega \epsilon} B \cos kx \cdot B \cos kx 
+    \end{bmatrix} \\
+    | \mathbb{P} |^2 &= \left( \frac{k}{j\omega \epsilon} B^2 \sin kx \cos kx \right)^2
+                      + \left( - \frac{\beta}{\omega \epsilon} B^2 \cos^2 kx \right)^2 \\
+    &= \frac{B^4}{\omega^2 \epsilon^2} \cos^2 kx \left( -k^2 \sin^2 kx + \beta^2 \cos^2 kx \right) \\
+    &= \frac{B^4}{\omega^2 \epsilon^2} \cos^2 kx \left( (\beta^2 - \omega^2 \mu \epsilon) \sin^2 kx + \beta^2 \cos^2 kx \right) \\
+    &= \frac{B^4}{\omega^2 \epsilon^2} \cos^2 kx \left( \beta^2 - \omega^2 \mu \epsilon \sin^2 kx \right) 
+\end{align*}
+
+真空中のPoyntingベクトルは
+\begin{align*}
+    \mathbb{P} &= 
+    \begin{bmatrix}
+        -\frac{\beta}{\omega \epsilon_0} C e^{-k_0(x-a)} \\
+        0 \\
+        \frac{k_0}{j\omega \epsilon_0} C e^{-k_0(x-a)}
+    \end{bmatrix} \times
+    \begin{bmatrix}
+        0 \\
+        C e^{-k_0(x-a)} \\
+        0
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        -\frac{k_0}{j\omega \epsilon_0} C e^{-k_0(x-a)} \cdot C e^{-k_0(x-a)} \\
+        0 \\
+        -\frac{\beta}{\omega \epsilon_0} C e^{-k_0(x-a)} \cdot C e^{-k_0(x-a)}
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        -\frac{k_0}{j\omega \epsilon_0} C^2 e^{-2k_0(x-a)} \\
+        0 \\
+        -\frac{\beta}{\omega \epsilon_0} C^2 e^{-2k_0(x-a)}
+    \end{bmatrix} \\
+    |\mathbb{P}|^2 &= \left( -\frac{k_0}{j\omega \epsilon_0} C^2 e^{-2k_0(x-a)} \right)^2
+                    + \left( -\frac{\beta}{\omega \epsilon_0} C^2 e^{-2k_0(x-a)} \right)^2 \\
+    &= \frac{C^4}{\omega^2 \epsilon_0^2} (-k_0^2 + \beta^2) e^{-4k_0(x-a)} \\
+    &= \frac{C^4}{\omega^2 \epsilon_0^2} (-\beta^2 + \omega^2 \mu_0 \epsilon_0 + \beta^2) e^{-4k_0(x-a)} \\
+    &= C^4 \frac{\mu_0}{\epsilon_0} e^{-4k_0(x-a)} 
+\end{align*}
+
+単位面積あたりの伝送電力を$1$に規格化すると
+\begin{align*}
+    \begin{cases}
+        \frac{B^4}{\omega^2 \epsilon^2} \cos^2 kx \left( \beta^2 - \omega^2 \mu \epsilon \sin^2 kx \right) &= 1 \\
+        C^4 \frac{\mu_0}{\epsilon_0} e^{-4k_0(x-a)} &= 1
+    \end{cases}
+\end{align*}
+
 
 
 %===========================================================================
