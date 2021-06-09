@@ -72,21 +72,10 @@ void inverse(const int size,
     }
 }
 
-/*
-00 01 02 03
-10 11 12 13
-20 21 22 23
-30 31 32 33
-*/
-
 void dot(const int size, 
          const double complex m1[size][size],
          const double complex m2[size][size],
          double complex result[size][size]){
-
-    // r[0][0] = m1[0][0]*m2[0][0] + m1[0][1]*m2[1][0] + m1[0][2]*m2[2][0] + m1[0][3]*m2[3][0];
-    // r[0][1] = m1[0][0]*m2[0][1] + m1[0][1]*m2[1][1] + m1[0][2]*m2[2][1] + m1[0][3]*m2[3][1];
-    // r[1][0] = m1[1][0]*m2[0][0] + m1[1][1]*m2[1][0] + m1[1][2]*m2[2][0] + m1[1][3]*m2[3][0];
 
     for (int i = 0; i < size; i++){
         for (int j = 0; j < size; j++){
