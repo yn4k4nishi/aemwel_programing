@@ -367,10 +367,34 @@ $xy$平面での単位面積当たりの有効伝送電力$P_e$は
 
 消したい変数は $\beta, a, B, C$
 
+$2ka = \pi$とおく
 \begin{align*}
-    a &= \frac{1}{2k} \\ % 適当においてみた
+    \frac{\beta}{2\omega \epsilon} B^2 \left( a + \frac{1}{2k} \sin 2ka \right) + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 &= 1 \\
+    \frac{\beta a}{2\omega \epsilon} B^2 + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 &= 1 \\
+    \frac{1}{2}\,\frac{\beta a}{\omega \epsilon} B^2 + \frac{1}{2}\,\frac{\beta}{k_0\omega\epsilon_0} C^2 &= 1 \\
+\end{align*}
+\begin{align*}
+    &\begin{cases}
+        \frac{\beta a}{\omega \epsilon} B^2 &= 1 \\
+        \frac{\beta}{k_0\omega\epsilon_0} C^2 &= 1
+    \end{cases} \\
+    &\begin{cases}
+        B^2 &= \frac{\omega \epsilon}{\beta a} \\
+        C^2 &= \frac{k_0\omega\epsilon_0}{\beta}
+    \end{cases} \\
+    &\begin{cases}
+        B &= \sqrt{ \frac{\omega \epsilon}{\beta a}  } \\
+        C &= \sqrt{ \frac{k_0\omega\epsilon_0}{\beta}} 
+    \end{cases} \\
 \end{align*}
 
+\begin{align*}
+    k &= \frac{\pi}{2a} \\
+    k^2 &= \frac{\pi^2}{4a^2} \\
+        &= -\beta^2 + \omega^2 \mu \epsilon \\
+    \beta^2 &= \omega^2 \mu \epsilon - \frac{\pi^2}{4a^2} \\
+    \beta &= \sqrt{ \omega^2 \mu \epsilon - \frac{\pi^2}{4a^2} } \\
+\end{align*}
 
 %===========================================================================
 % \cite{aaa}
