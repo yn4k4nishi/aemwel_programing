@@ -2,6 +2,7 @@
 from os import error
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.core.fromnumeric import size
 from numpy.lib.function_base import kaiser
 
 
@@ -26,23 +27,23 @@ w = 4.925 * c / a
 k_0 = np.sqrt(   beta**2 - w**2 * mu_0 * eps_0 )
 k   = np.sqrt( - beta**2 + w**2 * mu   * eps   )
 
-B = 2 * k_0 * w * eps_0 / beta / ( k_0 * a / eps_r + (k_0**2/k**2 + 1)* np.cos(k*a)**2 )
+B = 2 * w * eps / beta /( a + np.sin(2*k*a)/(2*k) + eps_r / k_0 * np.cos(k*a)**2 )
 B = np.sqrt(B)
 C = B * np.cos(k*a)
 
-### Function ###
 def E_x(x):
+### Function ###
         return np.where(
         x < a,
         - beta / w / eps   * B * np.cos(  k * x ),
-        - beta / w / eps_0 * C * np.exp( -k_0 * (x - a) ) /eps_r
+        - beta / w / eps_0 * C * np.exp( -k_0 * (x - a) )
     )
 
 def E_z(x):
     return np.where(
         x < a,
         k   / w / eps   * B * np.sin( k * x ),
-        k_0 / w / eps_0 * C * np.exp( -k_0 * (x - a) ) /eps_r**2
+        k_0 / w / eps_0 * C * np.exp( -k_0 * (x - a) )
     )
 
 def H_y(x):
@@ -56,26 +57,25 @@ def H_y(x):
 def main():
     x = np.linspace(0, 2*a, 1000)
 
-    # y = E_x(x)
-    # y = E_z(x)
-    # y = H_y(x)
+    plt.figure(figsize=(16.0, 12.0))
+    plt.suptitle('$\omega = 10^{10}, \, \epsilon_r = 3.2, \, a = 0.5 $')
 
-    # x1 = np.linspace(0, a  , 100)
-    # x2 = np.linspace(a, 2*a, 100)
-
-    # plt.plot(x1, k / w / eps * B * np.sin( k * x1 ))
-    # plt.plot(x2, k_0 / w / eps_0 * C * np.exp(-k_0 * (x2 - a)))
-
+    plt.subplot(1,2,1)
+    plt.title('Electric Fields $\mathbb{E}$')
     plt.plot(x, E_x(x), label="$E_x$")
     plt.plot(x, E_z(x), label="$E_z$")
-    # plt.plot(x, H_y(x), label="$H_y$")
-    # plt.scatter(x, y, marker='.')
 
     plt.legend()
     plt.xlim(0  , 2*a)
-    # plt.ylim(-2 , 2  )
     plt.xlabel('$x$')
-    plt.ylabel('Amp')
+
+    plt.subplot(1,2,2)
+    plt.title('Magnetic Fields $\mathbb{B}$')
+    plt.plot(x, H_y(x), label="$H_y$")
+
+    plt.legend()
+    plt.xlim(0  , 2*a)
+    plt.xlabel('$x$')
 
     plt.show()
 
