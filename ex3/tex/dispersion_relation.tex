@@ -186,12 +186,12 @@ $$ H_y = A \sin k x + B \cos k x \qquad (A,B : const) $$
 
 誘電体スラブ中と同様に$H_y$について解くと
 \begin{align*}
-    ( \frac{\partial^2}{\partial x^2} - \beta^2)H_y + \omega^2 \mu_0 \epsilon_0 H_y &= 0
+    \left( \frac{\partial^2}{\partial x^2} - \beta^2 \right) H_y + \omega^2 \mu_0 \epsilon_0 H_y &= 0
 \end{align*}
 
 ここで$k_0^2 = \beta^2 - \omega^2 \mu_0 \epsilon_0$とすると
 \begin{align*}
-    ( \frac{\partial^2}{\partial x^2} - k_0^2)H_y &= 0 \\
+    \left( \frac{\partial^2}{\partial x^2} - k_0^2 \right) H_y &= 0 \\
     H_y &= C e^{\pm k_0 (x - a)} \qquad ( C : const)
 \end{align*}
 
@@ -215,17 +215,17 @@ $$ H_y = C e^{- k_0 (x - a)} $$
     & = \begin{bmatrix}
         -\frac{\partial}{\partial z} \mu_0 C e^{- k_0 (x - a)} \\
         0 \\
-        -\frac{\partial}{\partial x} \mu_0 C e^{- k_0 (x - a)}
+        \frac{\partial}{\partial x} \mu_0 C e^{- k_0 (x - a)}
     \end{bmatrix} \\
-    & = \begin{bmatrix}-\frac{\partial}{\partial x}
-        -j\beta \mu_0 C e^{- k_0 (x - a)} \\
+    & = \begin{bmatrix}
+        j\beta \mu_0 C e^{- k_0 (x - a)} \\
         0 \\
-        k_0 \mu_0 C e^{- k_0 (x - a)}
+        - k_0 \mu_0 C e^{- k_0 (x - a)}
     \end{bmatrix} \\
     &= -j \omega \mu_0 \epsilon_0 \mathbb{E} \\
     \\
-    j\omega \mu_0 \epsilon_0 E_x &= -j\beta \mu_0 C e^{- k_0 (x - a)} \\
-    E_x &= - \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
+    j\omega \mu_0 \epsilon_0 E_x &= j\beta \mu_0 C e^{- k_0 (x - a)} \\
+    E_x &= \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
     \\
     j\omega \mu_0 \epsilon_0 E_z &= k_0 \mu_0 C e^{- k_0 (x - a)} \\
     E_z &= \frac{k_0}{j\omega \epsilon_0} C e^{- k_0 (x - a)}
@@ -234,7 +234,7 @@ $$ H_y = C e^{- k_0 (x - a)} $$
 真空中の一般解をまとめると
 \begin{align*}
     \begin{cases}
-        E_x &= - \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
+        E_x &= \frac{\beta}{\omega \epsilon_0} C e^{- k_0 (x - a)} \\
         E_y &= 0 \\
         E_z &= \frac{k_0}{j\omega \epsilon_0} C e^{- k_0 (x - a)}
     \end{cases} \qquad
@@ -248,6 +248,7 @@ $$ H_y = C e^{- k_0 (x - a)} $$
 $x=a$での境界条件より、真空中と誘電体中は連続なので
 \begin{align*}
     \begin{cases}
+        E_x |_{x=a} &= -\frac{\beta}{\omega \epsilon} B \cos ka = -\frac{\beta}{\omega \epsilon_0} C \\
         E_z |_{x=a} &= -\frac{k}{j\omega \epsilon} B \sin ka = \frac{k_0}{j\omega \epsilon_0}C \\
         H_y |_{x=a} &= B \cos ka = C 
     \end{cases} \\
@@ -365,36 +366,50 @@ $xy$平面での単位面積当たりの有効伝送電力$P_e$は
     &= 1
 \end{align*}
 
-消したい変数は $\beta, a, B, C$
-
-$2ka = \pi$とおく
+誘電体-真空の境界条件より
 \begin{align*}
-    \frac{\beta}{2\omega \epsilon} B^2 \left( a + \frac{1}{2k} \sin 2ka \right) + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 &= 1 \\
-    \frac{\beta a}{2\omega \epsilon} B^2 + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 &= 1 \\
-    \frac{1}{2}\,\frac{\beta a}{\omega \epsilon} B^2 + \frac{1}{2}\,\frac{\beta}{k_0\omega\epsilon_0} C^2 &= 1 \\
-\end{align*}
-\begin{align*}
-    &\begin{cases}
-        \frac{\beta a}{\omega \epsilon} B^2 &= 1 \\
-        \frac{\beta}{k_0\omega\epsilon_0} C^2 &= 1
-    \end{cases} \\
-    &\begin{cases}
-        B^2 &= \frac{\omega \epsilon}{\beta a} \\
-        C^2 &= \frac{k_0\omega\epsilon_0}{\beta}
-    \end{cases} \\
-    &\begin{cases}
-        B &= \sqrt{ \frac{\omega \epsilon}{\beta a}  } \\
-        C &= \sqrt{ \frac{k_0\omega\epsilon_0}{\beta}} 
-    \end{cases} \\
+    \begin{cases}
+        B \cos ka &= \epsilon_r C \\
+        \frac{k}{\epsilon} B \sin ka &= \frac{k_0}{\epsilon_0} C \\
+        B \cos ka &= C
+    \end{cases}
 \end{align*}
 
 \begin{align*}
-    k &= \frac{\pi}{2a} \\
-    k^2 &= \frac{\pi^2}{4a^2} \\
-        &= -\beta^2 + \omega^2 \mu \epsilon \\
-    \beta^2 &= \omega^2 \mu \epsilon - \frac{\pi^2}{4a^2} \\
-    \beta &= \sqrt{ \omega^2 \mu \epsilon - \frac{\pi^2}{4a^2} } \\
+    \sin ka &= \frac{k_0}{k}\frac{\epsilon}{\epsilon_0} \frac{C}{B} \\
+            &= \epsilon_r \frac{k_0}{k} \frac{C}{B} \\
+    \cos ka &= \frac{C}{B} \\
+    \sin 2ka &= 2 \sin ka \cos ka \\
+             &= 2 \epsilon_r \frac{k_0}{k} \frac{C^2}{B^2}\\
+    \\
+    \frac{\beta}{2\omega \epsilon} B^2 \left( a + \frac{1}{2k} \sin 2ka \right) + \frac{\beta}{2k_0 \omega \epsilon_0} C^2
+    &= \frac{\beta}{2\omega \epsilon} B^2 \left( a + \frac{1}{2k} 2 \epsilon_r \frac{k_0}{k} \frac{C^2}{B^2} \right) 
+     + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 \\
+    &= \frac{\beta a}{2\omega \epsilon} B^2
+     + \frac{\beta}{2\omega \epsilon} \frac{\epsilon_r k_0}{k^2} C^2
+     + \frac{\beta}{2k_0 \omega \epsilon_0} C^2 \\
+    &= \frac{\beta a}{2\omega \epsilon} B^2
+     + \frac{\beta}{2k_0 \omega \epsilon_0} \left(
+        \frac{k_0^2}{k^2} + 1
+       \right) C^2 \\
+    &= \frac{\beta a}{2\omega \epsilon} B^2
+    + \frac{\beta}{2k_0 \omega \epsilon_0} \left(
+        \frac{k_0^2}{k^2} + 1
+        \right) B^2 \cos^2 ka \\
+    &= \frac{\beta a}{2\omega \epsilon} B^2
+    + \frac{\beta}{2k_0 \omega \epsilon_0} \left(
+        \frac{k_0^2}{k^2} + 1
+        \right) B^2 \cos^2 ka \\
+    &= \frac{\beta}{2k_0 \omega \epsilon_0} B^2 \left[
+        \frac{k_0 a}{\epsilon_r} + \left( \frac{k_0^2}{k^2} + 1 \right) \cos^2 ka
+    \right] \\
+    &= 1 \\
+    B^2 &= \frac{2k_0 \omega \epsilon_0}{\beta} \left[
+        \frac{k_0 a}{\epsilon_r} + \left( \frac{k_0^2}{k^2} + 1 \right) \cos^2 ka
+    \right]^{-1} \\ 
 \end{align*}
+
+
 
 %===========================================================================
 % \cite{aaa}

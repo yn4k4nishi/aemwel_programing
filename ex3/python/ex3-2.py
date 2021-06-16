@@ -49,7 +49,7 @@ def dichotomy(x, min_y, max_y, error):
 
 
 def main():
-    error = 1e-2
+    error = 1e-4
 
     start = time.time() # 時間計測 開始
 
@@ -79,6 +79,7 @@ def main():
     # 実行時間
     elapsed_time = time.time() - start
     print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
+
 
 if __name__ == "__main__":
     main()
