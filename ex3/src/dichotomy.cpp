@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 #include "dichotomy.h"
 
 bool f(double x, double y, double *error){
@@ -15,7 +16,7 @@ bool f(double x, double y, double *error){
         return false;
     }
 
-    *error = tan( sqrt( -x*x + eps_r * y*y ) ) - sqrt( ((-x*x + eps_r * y*y)/(x*x - y*y)) );
+    *error = tan( sqrt( -x*x + eps_r * y*y ) ) - eps_r * sqrt( ((x*x - y*y)/(-x*x + eps_r * y*y)) );
     return true;
 }
 

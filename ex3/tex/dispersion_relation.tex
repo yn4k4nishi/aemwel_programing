@@ -246,41 +246,42 @@ $$ H_y = C e^{- k_0 (x - a)} $$
 $x=a$での境界条件より、$\mathbb{E}$と$\mathbb{H}$の接線成分は連続なので
 \begin{align*}
     \begin{cases}
-        E_z |_{x=a} &= -\frac{k}{j\omega \epsilon} B \sin ka = \frac{k_0}{j\omega \epsilon_0}C \\
+        E_z |_{x=a} &= \frac{k}{j\omega \epsilon} B \sin ka = \frac{k_0}{j\omega \epsilon_0}C \\
         H_y |_{x=a} &= B \cos ka = C 
     \end{cases} \\
 \end{align*}
 \begin{align*}
-    -\frac{\epsilon_0}{\epsilon} \frac{k}{k_0} B \sin ka &= B \cos ka \\
-    \tan ka &= - \frac{\epsilon}{\epsilon_0} \frac{k_0}{k}\\
-            &= - \epsilon_r \frac{k_0}{k} \\
-    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= - \epsilon_r \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}}
+    \frac{\epsilon_0}{\epsilon} \frac{k}{k_0} B \sin ka &= B \cos ka \\
+    \tan ka &= \frac{\epsilon}{\epsilon_0} \frac{k_0}{k}\\
+            &= \epsilon_r \frac{k_0}{k} \\
+    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) 
+        &= \epsilon_r \sqrt{\frac{\beta^2-\omega^2 \mu_0 \epsilon_0}{-\beta^2+\omega^2 \mu \epsilon}}
 \end{align*}
 
 $x = \beta a,\ y = \omega a /c$と規格化すると、
 光速$\frac{1}{c} = \sqrt{\mu_0 \epsilon_0} $より
 \begin{align*}
-    \tan (\sqrt{-\beta^2+\omega^2 \mu \epsilon}\ a) &= - \epsilon_r \sqrt{\frac{-\beta^2+\omega^2 \mu \epsilon}{\beta^2-\omega^2 \mu_0 \epsilon_0}} \\
-    \tan (\sqrt{-\beta^2 a^2+\omega^2 a^2 \mu \epsilon} ) &= - \epsilon_r \sqrt{\frac{-\beta^2 a^2 +\omega^2 a^2 \mu \epsilon}{\beta^2 a^2 - \omega^2 a^2 \mu_0 \epsilon_0}} \\
-    \tan (\sqrt{-x^2 + \epsilon_r y^2 } ) &= - \epsilon_r \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
+    \tan (\sqrt{-\beta^2 a^2+\omega^2 a^2 \mu \epsilon} ) &= \epsilon_r \sqrt{\frac{\beta^2 a^2 - \omega^2 a^2 \mu_0 \epsilon_0}{-\beta^2 a^2 +\omega^2 a^2 \mu \epsilon}} \\
+    \tan (\sqrt{-x^2 + \epsilon_r y^2 } ) &= \epsilon_r \sqrt{\frac{ x^2 - y^2}{-x^2 + \epsilon_r y^2}} \\
 \end{align*} 
 
 比較のため、真空のみの場合を考える
 
 $a \rightarrow 0,\ \epsilon_r = 1$とすると分散関係式は
 \begin{align*}
-    \tan 0 &= - \sqrt{\frac{-x^2 + y^2}{ x^2 - y^2}} \\
-    -x^2 + y^2 &= 0 \\
+    \tan 0 &= \sqrt{\frac{-x^2 + y^2}{ x^2 - y^2}} \\
+    x^2 - y^2 &= 0 \\
     y^2 &= x^2 \\ 
-    y = x
+    y &= x
 \end{align*}
 
-また、誘電体のみの場合を考えると、分散関係式は
+また、誘電体のみの場合を考えると、$ka = \frac{\pi}{2}$\\
+分散関係式は
 \begin{align*}
-    \tan 0 &= - \epsilon_r \sqrt{\frac{-x^2 + \epsilon_r y^2}{ x^2 - y^2}} \\
+    \tan \frac{\pi}{2} &= \epsilon_r \sqrt{\frac{ x^2 - y^2}{-x^2 + \epsilon_r y^2}} \\
     -x^2 + \epsilon_r y^2 &= 0 \\
     y^2 &= x^2 / \epsilon_r \\ 
-    y = x / \sqrt{\epsilon_r}
+    y &= x / \sqrt{\epsilon_r}
 \end{align*}
 
 \newpage
