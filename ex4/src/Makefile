@@ -1,8 +1,8 @@
 CC := gcc
-CFLAGS := -g -Wall -Wextra
+CFLAGS := -g -Wall -Wextra -lm
 
-all : main.c
-	$(CC) main.c $(CFLAGS) -o main.o
+all : main.c dichotomy.h
+	$(CC) main.c dichotomy.h $(CFLAGS) -o main.o
 
 clean: 
 	$(RM) main.o
