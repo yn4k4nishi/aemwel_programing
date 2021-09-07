@@ -6,14 +6,14 @@ int main(){
 
     double tolerance = 1.0e-4;
     
-    double x_min = 0.0;
+    double x_min = -PI;
     double x_max = PI;
 
     double y_min = 0.0;
     double y_max = 10.0;
 
-    double x_step = (x_max - x_min) / 100.0; // 位相の刻み幅
-    double y_step = (y_max - y_min) / 100.0;
+    double x_step = (x_max - x_min) / 1000.0; // 位相の刻み幅
+    double y_step = (y_max - y_min) / 1000.0;
 
     printf("tolerance : %lf\n",tolerance);
     printf("x : %lf ~ %lf\n",x_min,x_max);
