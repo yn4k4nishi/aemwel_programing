@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+
+#define PI 3.14159265358979323846
 
 // 対象の関数
 // ゼロ除算などの計算できない場合はfalseを返す
@@ -19,7 +22,9 @@ bool f(double x, double y, double *error){
     return true;
 }
 
-bool dichotomy(double x, double min_y, double max_y, double error, double *ans){
+// 2分法
+// xは固定で、yに関して
+bool dichotomy(double x, double min_y, double max_y, double tolerance, double *ans){
     const int max_trials = 1e4;
     
     double t0, t1;
@@ -33,7 +38,7 @@ bool dichotomy(double x, double min_y, double max_y, double error, double *ans){
     int num = 0;
     double mid_y = (max_y + min_y) / 2.0;
     f(x, mid_y, &t1);
-    while (abs(t1) > error) {
+    while (abs(t1) > tolerance) {
         f(x, min_y, &t0);
         f(x, mid_y, &t1);
 
