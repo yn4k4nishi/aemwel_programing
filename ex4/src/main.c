@@ -15,10 +15,10 @@ int main(){
     double x_step = (x_max - x_min) / 2000.0; // 位相の刻み幅
     double y_step = (y_max - y_min) / 2000.0;
 
-    printf("tolerance : %lf\n",tolerance);
-    printf("x : %lf ~ %lf\n",x_min,x_max);
-    printf("y : %lf ~ %lf\n",y_min,y_max);
-    printf("\n");
+    // printf("tolerance : %lf\n",tolerance);
+    // printf("x : %lf ~ %lf\n",x_min,x_max);
+    // printf("y : %lf ~ %lf\n",y_min,y_max);
+    // printf("\n");
 
     printf("x, y\n");
 

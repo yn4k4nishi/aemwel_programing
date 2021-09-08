@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "dichotomy.h": "c",
+        "math.h": "c",
+        "stdio.h": "c"
     }
 }
