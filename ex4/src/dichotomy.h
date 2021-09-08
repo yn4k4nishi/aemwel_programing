@@ -12,7 +12,7 @@ bool f(double x, double y, double *error){
     // パラメータ
     double L_R = 1.0;
     double C_R = 1.0;
-    double L_L = 1.0;
+    double L_L = 5.0;
     double C_L = 1.0;
 
     double w2_se = 1.0 / L_R / C_L;

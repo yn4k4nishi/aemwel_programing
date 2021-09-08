@@ -28,7 +28,7 @@ int main(){
             double ans, t;
             if (dichotomy(x, y, y + y_step, tolerance, &ans)){
                 f(x, ans, &t);
-                printf("%lf, %lf, %lf\n", x, ans, t);
+                printf("%lf, %lf\n", x, ans);
             }
         }
         
