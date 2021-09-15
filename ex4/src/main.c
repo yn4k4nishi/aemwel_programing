@@ -9,18 +9,18 @@ int main(){
     double x_min = -PI;
     double x_max = PI;
 
-    double y_min = 0.001;
-    double y_max = 20.0;
+    double y_min = 1.0;
+    double y_max = 1.0e10;
 
     double x_step = (x_max - x_min) / 2000.0; // 位相の刻み幅
-    double y_step = (y_max - y_min) / 2000.0;
+    double y_step = (y_max - y_min) / 10000.0;
 
     // printf("tolerance : %lf\n",tolerance);
     // printf("x : %lf ~ %lf\n",x_min,x_max);
     // printf("y : %lf ~ %lf\n",y_min,y_max);
     // printf("\n");
 
-    printf("x, y\n");
+    printf("x, y, ,,,,,,,,,\n");
 
     for (double x = x_min; x < x_max; x += x_step){
         
