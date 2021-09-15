@@ -20,7 +20,7 @@ int main(){
     // printf("y : %lf ~ %lf\n",y_min,y_max);
     // printf("\n");
 
-    printf("x, y, ,,,,,,,,,\n");
+    printf("x,y\n");
 
     for (double x = x_min; x < x_max; x += x_step){
         
@@ -28,7 +28,7 @@ int main(){
             double ans, t;
             if (dichotomy(x, y, y + y_step, tolerance, &ans)){
                 f(x, ans, &t);
-                printf("%lf, %lf\n", x, ans);
+                printf("%lf,%lf\n", x, ans);
             }
         }
         
