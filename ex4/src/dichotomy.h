@@ -21,18 +21,19 @@ bool f(double x, double y, double *error){
 
     // *error = cos(x) - 1.0 + y*y * L_R *C_R / 2.0 * ( 1- w2_se /y /y ) * ( 1- w2_sh /y /y );
     
-    double Z_0 = 75.0;
+    double Z_0 = 377.0;
     double Y_0 = 1.0 / Z_0;
 
     double w = 2.0 * PI * y;
     double L_0 = 13.2e-9;
     double C_0 = 0.5e-12;
-    double v = w * sqrt(L_0 * C_0);
-    double v_0 = 2.0 * PI * 1.5e9 * sqrt(L_0 * C_0);
-    double d = 0.25 * v_0 / 2.0 / PI / 1.5e9;
-    double theta = w * d / v; // @1.5GHz
+    
+    // double d = - 0.25 * 2.0*PI*1.5e9 * sqrt(L_0*C_0);
+    // double v_p = -w*w * sqrt( L_0 * C_0 ); // phase velocity
+    // double theta = w * d / v_p;            // 0.25rad @1.5GHz
+    double theta = 0.25;
 
-    double Z = 1.0 / w / C_0;
+    double Z = 1.0 / w / C_0; // 右手系の要素が入ってない？
     double Y = 1.0 / w / L_0;
     double ZY = -Z * Y;
 
