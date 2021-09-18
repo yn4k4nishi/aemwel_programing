@@ -10,7 +10,7 @@ int main(){
     double x_max = PI;
 
     double y_min = 1.0;
-    double y_max = 1.0e10;
+    double y_max = 9.0e9;
 
     double x_step = (x_max - x_min) / 2000.0; // 位相の刻み幅
     double y_step = (y_max - y_min) / 10000.0;
