@@ -49,28 +49,46 @@ def main2():
     Z = 1/ 1j /w /C_0
     Y = 1/ 1j /w /L_0
 
+    A = np.cos(theta) + 1j/2*(Z*Y_0+Z_0*Y)*np.sin(theta) + Z*Y*np.cos(theta/2)*np.cos(theta/2)
     B = Z * np.cos(theta) + 1j*Z/4 *(Z*Y_0 + Z_0*Y + 4*Z_0/Z)*np.sin(theta) + Z*Z*Y/4*np.cos(theta/2)*np.cos(theta/2) - Z_0*Z_0*Y*np.sin(theta/2)*np.sin(theta/2)
     C = Y*np.cos(theta/2)*np.cos(theta/2) + 1j*Y_0*np.sin(theta)
+    D = Z*Y/2*np.cos(theta/2)*np.cos(theta/2) + 1j/2*(Z*Y_0 + Z_0*Y)*np.sin(theta) + np.cos(theta)
 
     Z_B = np.sqrt(B/C)
 
+    S11 = 1/(A + B/Z_B + C*Z_B + D) * (A + B/Z_B - C*Z_B - D)
+    S21 = 1/(A + B/Z_B + C*Z_B + D) * 2
+    S12 = 1/(A + B/Z_B + C*Z_B + D) * 2*(A*D - B*C)
+    S22 = 1/(A + B/Z_B + C*Z_B + D) * (-A + B/Z_B - C*Z_B + D)
+
     plt.figure(figsize=(18,9))
 
-    plt.subplot(1,2,1)
-    plt.ylim(0,100)
-    # plt.plot(f, Z_B.real)
-    plt.scatter(f_GHz, Z_B.real)
-    plt.title("Real part")
-    plt.xlabel("Frequency [GHz]")
-    plt.ylabel("Imepedance [$\Omega$]")
+    ## Bloch impedance
+    # plt.subplot(1,2,1)
+    # plt.ylim(0,100)
+    # # plt.plot(f, Z_B.real)
+    # plt.scatter(f_GHz, Z_B.real)
+    # plt.title("Real part")
+    # plt.xlabel("Frequency [GHz]")
+    # plt.ylabel("Imepedance [$\Omega$]")
 
-    plt.subplot(1,2,2)
-    plt.ylim(0,100)
-    # plt.plot(f, Z_B.imag)
-    plt.scatter(f_GHz, Z_B.imag)
-    plt.title("Imaginary part")
+    # plt.subplot(1,2,2)
+    # plt.ylim(0,100)
+    # # plt.plot(f, Z_B.imag)
+    # plt.scatter(f_GHz, Z_B.imag)
+    # plt.title("Imaginary part")
+    # plt.xlabel("Frequency [GHz]")
+    # plt.ylabel("Imepedance [$\Omega$]")
+
+    ## S param
+    plt.title("S parameter")
+    plt.ylim(0, 1.5)
     plt.xlabel("Frequency [GHz]")
-    plt.ylabel("Imepedance [$\Omega$]")
+    plt.plot(f_GHz, S11, label="S11")
+    plt.plot(f_GHz, S21, label="S21")
+    plt.plot(f_GHz, S12, label="S12")
+    plt.plot(f_GHz, S22, label="S22")
+    plt.legend()
 
     plt.show()
 
