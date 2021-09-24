@@ -101,9 +101,9 @@ def main():
     ax_Z0 = plt.axes([0.1, 0.20, 0.8, 0.03])
     ax_L0 = plt.axes([0.1, 0.15, 0.8, 0.03])
     ax_C0 = plt.axes([0.1, 0.10, 0.8, 0.03])
-    slider_Z0 = Slider(ax_Z0, r"$Z_0$[$\Omega$]", 0, 200, valinit=50, valstep=1)
-    slider_L0 = Slider(ax_L0, r"$L_0$[nH]", 0, 50, valinit=10, valstep=0.01)
-    slider_C0 = Slider(ax_C0, r"$C_0$[pF]", 0, 10, valinit= 1, valstep=0.01)
+    slider_Z0 = Slider(ax_Z0, r"$Z_0$[$\Omega$]", 0, 200, valinit=50,  valstep=1)
+    slider_L0 = Slider(ax_L0, r"$L_0$[nH]"      , 0, 50, valinit=13.2, valstep=0.01)
+    slider_C0 = Slider(ax_C0, r"$C_0$[pF]"      , 0, 10, valinit= 0.5, valstep=0.01)
 
     ax_button = plt.axes([0.8, 0.05, 0.1, 0.04])
     button = Button(ax_button, "Calc", color="green",hovercolor='0.7')
