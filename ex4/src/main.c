@@ -9,8 +9,8 @@ int main(){
     double x_min = -PI;
     double x_max = PI;
 
-    double y_min = 1.0;
-    double y_max = 9.0e9;
+    double y_min = 1;
+    double y_max = 11e9;
 
     double x_step = (x_max - x_min) / 2000.0; // 位相の刻み幅
     double y_step = (y_max - y_min) / 10000.0;
@@ -28,7 +28,7 @@ int main(){
             double ans, t;
             if (dichotomy(x, y, y + y_step, tolerance, &ans)){
                 f(x, ans, &t);
-                printf("%lf,%lf\n", x, ans);
+                printf("%lf,%lf\n", x, ans/1e9);
             }
         }
         
