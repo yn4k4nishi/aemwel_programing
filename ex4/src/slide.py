@@ -4,8 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 
-# f = np.linspace(1, 10e9, 800)
-f = np.linspace(10e9, 1, 800)
+f = np.linspace(1, 10e9, 800)
 
 x_data = []
 y_data = []
@@ -53,29 +52,26 @@ def calc():
         Z = - 1j / w_ / C_0
         Y = - 1j / w_ / L_0
 
-        A = np.cos(theta) + 1j/2*(Z*Y_0+Z_0*Y)*np.sin(theta) + Z*Y/2*np.cos(theta/2)*np.cos(theta/2)
-        B = Z * np.cos(theta) + 1j*Z/4 *(Z*Y_0 + Z_0*Y + 4*Z_0/Z)*np.sin(theta) + Z*Z*Y/4*np.cos(theta/2)*np.cos(theta/2) - Z_0*Z_0*Y*np.sin(theta/2)*np.sin(theta/2)
-        C = Y*np.cos(theta/2)*np.cos(theta/2) + 1j*Y_0*np.sin(theta)
-        D = Z*Y/2*np.cos(theta/2)*np.cos(theta/2) + 1j/2*(Z*Y_0 + Z_0*Y)*np.sin(theta) + np.cos(theta)
+        F_unit = np.array([[1, Z/2],[0,1]])
+        F_unit = np.dot(F_unit, np.array([[np.cos(theta/2), 1j*Z_0*np.sin(theta/2)],[1j*Y_0*np.sin(theta/2), np.cos(theta/2)]]))
+        F_unit = np.dot(F_unit, np.array([[1,0],[Y,1]]))
+        F_unit = np.dot(F_unit, np.array([[np.cos(theta/2), 1j*Z_0*np.sin(theta/2)],[1j*Y_0*np.sin(theta/2), np.cos(theta/2)]]))
+        F_unit = np.dot(F_unit, np.array([[1, Z/2],[0,1]]))
         
-        F = np.array([[A,B],[C,D]])
+        F = F_unit
         for _ in range(N-1):
-            F = np.dot(F,F)
+            F = np.dot(F,F_unit)
 
         A = F[0][0]
         B = F[0][1]
         C = F[1][0]
         D = F[1][1]
-        
-        print(A*D-B*C)
 
         S11 = 1/(A + B/Z_P + C*Z_P + D) * (A + B/Z_P - C*Z_P - D)
         S21 = 1/(A + B/Z_P + C*Z_P + D) * 2
 
-        S11_list.append(abs(S11))
-        S21_list.append(abs(S21))
-        # S11_list.append(20*np.log10(abs(S11)))
-        # S21_list.append(20*np.log10(abs(S21)))
+        S11_list.append(20*np.log10(abs(S11)))
+        S21_list.append(20*np.log10(abs(S21)))
     # print("Finish Calc.\n")
 
 def main():
@@ -95,8 +91,7 @@ def main():
 
     ax2.set_xlabel("Frequency [GHz]")
     ax2.set_ylabel("S [dB]")
-    # ax2.set_ylim(-30, 5)
-    ax2.set_ylim(-2, 2)
+    ax2.set_ylim(-30, 3)
     ax2.legend()
 
     ax_Z0 = plt.axes([0.1, 0.15, 0.8, 0.03])
