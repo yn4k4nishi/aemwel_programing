@@ -24,7 +24,7 @@ Y_P = 1/Z_P
 w = 2.0 * np.pi * f
 
 c     = 299792458   # 光速
-eps_r = 0.999991    # 誘電率
+eps_r = 2.62        # 誘電率
 mu_r  = 1           # 透磁率
 
 d_0 = 0.01  # 直列の伝送線路長さ
@@ -78,7 +78,7 @@ def calc():
         S21_list.append(20*np.log10(abs(S21)))
 
     x_data[len(x_data):len(x_data)] = [-i for i in x_data]
-    y_data = np.concatenate([f, f]).tolist()
+    y_data = np.concatenate([f/1e9, f/1e9]).tolist()
 
 def main():
     calc()
@@ -107,8 +107,8 @@ def main():
 
     slider_Z1 = Slider(ax_4, r"$Z_1$[$\Omega$]", 0, 200, valinit= 50 , valstep= 1)
     slider_Z0 = Slider(ax_3, r"$Z_0$[$\Omega$]", 0, 200, valinit= 50 , valstep= 1)
-    slider_d1 = Slider(ax_2, r"$d_1$[mm]"      , 0, 15 , valinit= 5 ,  valstep= 0.1)
-    slider_d0 = Slider(ax_1, r"$d_0$[mm]"      , 0, 15 , valinit= 5 ,  valstep= 0.1)
+    slider_d1 = Slider(ax_2, r"$d_1$[mm]"      , 0, 20 , valinit= 5 ,  valstep= 0.1)
+    slider_d0 = Slider(ax_1, r"$d_0$[mm]"      , 0, 20 , valinit= 5 ,  valstep= 0.1)
 
     def update(val):
         global Z_1
