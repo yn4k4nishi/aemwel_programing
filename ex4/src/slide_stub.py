@@ -12,10 +12,10 @@ y_data = []
 S11_list = []
 S21_list = []
 
-Z_0 = 50        # 直列の特性インピーダンス
+Z_0 = 59        # 直列の特性インピーダンス
 Y_0 = 1 / Z_0
 
-Z_1 = 50        # 並列の特性インピーダンス
+Z_1 = 73.5        # 並列の特性インピーダンス
 Y_1 = 1 / Z_1
 
 Z_P = 50        # ポートの入力インピーダンス
@@ -27,11 +27,12 @@ c     = 299792458   # 光速
 eps_r = 2.165       # 実効比誘電率
 mu_r  = 1           # 透磁率
 
-d_0 = 0.01  # 直列の伝送線路長さ
-d_1 = 0.01  # 並列の伝送線路長さ
+d_0 = 0.0064  # 直列の伝送線路長さ
+d_1 = 0.0112  # 並列の伝送線路長さ
 
-L_0 = 10e-9
-C_0 = 1.5e-12
+# L_0 = 10e-9
+C_0 = 2.25e-12 #1.8e-12
+C_R = 0.208 # Ohm
 
 N = 5           # セル数
 
@@ -48,7 +49,8 @@ def calc():
         k = w_ / c * np.sqrt(eps_r * mu_r)
         theta_0 = k * d_0
         theta_1 = k * d_1 
-        Z = - 1j / w_ / C_0
+        # Z = - 1j / w_ / C_0
+        Z = 1 / (1/C_R + 1/(1j * w_ * C_0))
         # Y = - 1j / w_ / L_0
         Y = 1 / (1j * Z_1 * np.tan(theta_1))
 
@@ -105,10 +107,10 @@ def main():
     ax_2 = plt.axes([0.1, 0.10, 0.8, 0.03])
     ax_1 = plt.axes([0.1, 0.05, 0.8, 0.03])
 
-    slider_Z1 = Slider(ax_4, r"$Z_1$[$\Omega$]", 0, 200, valinit= 50 , valstep= 1)
-    slider_Z0 = Slider(ax_3, r"$Z_0$[$\Omega$]", 0, 200, valinit= 50 , valstep= 1)
-    slider_d1 = Slider(ax_2, r"$d_1$[mm]"      , 0, 20 , valinit= 5 ,  valstep= 0.1)
-    slider_d0 = Slider(ax_1, r"$d_0$[mm]"      , 0, 20 , valinit= 5 ,  valstep= 0.1)
+    slider_Z1 = Slider(ax_4, r"$Z_1$[$\Omega$]", 0, 200, valinit= Z_1     , valstep= 0.5)
+    slider_Z0 = Slider(ax_3, r"$Z_0$[$\Omega$]", 0, 200, valinit= Z_0     , valstep= 0.5)
+    slider_d1 = Slider(ax_2, r"$d_1$[mm]"      , 0, 20 , valinit= d_1*1e3 , valstep= 0.1)
+    slider_d0 = Slider(ax_1, r"$d_0$[mm]"      , 0, 20 , valinit= d_0*1e3 , valstep= 0.1)
 
     def update(val):
         global Z_1
