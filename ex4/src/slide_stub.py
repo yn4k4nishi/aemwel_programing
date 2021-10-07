@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 
-f = np.linspace(1, 10e9, 800)
+f = np.linspace(1, 6e9, 800)
 
 x_data = []
 y_data = []
@@ -50,7 +50,7 @@ def calc():
         theta_0 = k * d_0
         theta_1 = k * d_1 
         # Z = - 1j / w_ / C_0
-        Z = 1 / (1/C_R + 1/(1j * w_ * C_0))
+        Z = C_R + 1/(1j * w_ * C_0)
         # Y = - 1j / w_ / L_0
         Y = 1 / (1j * Z_1 * np.tan(theta_1))
 
